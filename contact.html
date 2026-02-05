@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Noor Deenil Islam</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Open+Sans:wght@300;400;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <style>
+        :root {
+            --islamic-blue: #0d3b66;
+            --islamic-gold: #d4af37;
+            --islamic-green: #0a5c36;
+            --islamic-teal: #2a9d8f;
+            --islamic-purple: #6a4c93;
+            --islamic-cream: #fef9f3;
+        }
+        
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(13, 59, 102, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 20%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* Navigation - Same as index.html */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(13, 59, 102, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--islamic-gold);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 12px;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-logo-icon {
+            position: relative;
+            width: 45px;
+            height: 45px;
+        }
+        
+        .nav-logo-circle {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--islamic-blue) 0%, var(--islamic-teal) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--islamic-gold);
+        }
+        
+        .nav-logo-circle::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.2) 50%, transparent 70%);
+            animation: shine 3s infinite linear;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .nav-logo-inner {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--islamic-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Amiri', serif;
+            font-size: 18px;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        .nav-logo-crescent {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 50%;
+            top: 8px;
+            left: 24px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            z-index: 2;
+        }
+        
+        .nav-logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+        
+        .nav-arabic-logo {
+            font-family: 'Amiri', serif;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--islamic-blue);
+            letter-spacing: 0;
+        }
+        
+        .nav-english-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--islamic-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Contact Hero Section - Matching Index */
+        .hero-contact {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 160px 20px 80px;
+            background: linear-gradient(135deg, #0d3b66 0%, #1a5f8b 50%, #2a9d8f 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        .hero-contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-contact-title {
+            margin-bottom: 40px;
+        }
+        
+        .hero-arabic-title {
+            font-family: 'Amiri', serif;
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ffffff 0%, var(--islamic-gold) 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            line-height: 1.2;
+            margin-bottom: 15px;
+            animation: titleGlow 4s ease-in-out infinite alternate;
+        }
+        
+        @keyframes titleGlow {
+            0% { 
+                background-position: 0% 50%;
+                text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+            100% { 
+                background-position: 100% 50%;
+                text-shadow: 0 5px 25px rgba(212, 175, 55, 0.4);
+            }
+        }
+        
+        .hero-english-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-contact-subtitle {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .hero-contact-description {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 800px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-contact-description p {
+            font-size: 1.2rem;
+            color: white;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--islamic-gold) 0%, #ffd700 100%);
+            color: var(--islamic-blue);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--islamic-gold);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-contact-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Contact Main Section */
+        .contact-main-section {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #fef9f3 0%, #fff9f0 100%);
+            position: relative;
+        }
+        
+        .contact-main-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%230d3b66' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        .section-title {
+            text-align: center;
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            color: var(--islamic-blue);
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--islamic-gold), transparent);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 80px;
+        }
+        
+        .contact-form-container {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 25px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 40px rgba(13, 59, 102, 0.15);
+            border: 1px solid rgba(13, 59, 102, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--islamic-blue), var(--islamic-teal), var(--islamic-gold));
+        }
+        
+        .form-title {
+            color: var(--islamic-blue);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .form-title i {
+            color: var(--islamic-gold);
+            font-size: 1.5rem;
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--islamic-blue);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .form-group label i {
+            color: var(--islamic-teal);
+            font-size: 0.9rem;
+        }
+        
+        .form-input, .form-textarea, .form-select {
+            padding: 16px 20px;
+            border: 2px solid #e1e5eb;
+            border-radius: 12px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--islamic-teal);
+            box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.2);
+        }
+        
+        .form-textarea {
+            min-height: 180px;
+            resize: vertical;
+        }
+        
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%230d3b66' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            background-size: 12px;
+        }
+        
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .contact-info-card {
+            background: linear-gradient(135deg, var(--islamic-blue) 0%, var(--islamic-teal) 100%);
+            border-radius: 20px;
+            padding: 35px 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 15px 35px rgba(13, 59, 102, 0.15);
+            color: white;
+        }
+        
+        .contact-info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(13, 59, 102, 0.25);
+            border-color: var(--islamic-gold);
+        }
+        
+        .contact-info-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--islamic-gold);
+            font-size: 28px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-info-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .contact-info-card p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+        
+        .contact-info-card a {
+            color: var(--islamic-gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-info-card a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 100px 20px;
+            background: white;
+            position: relative;
+        }
+        
+        .faq-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e9ecef;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(13, 59, 102, 0.1);
+        }
+        
+        .faq-question {
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--islamic-blue) 0%, var(--islamic-teal) 100%);
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+            color: var(--islamic-gold);
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 25px 30px;
+            max-height: 500px;
+        }
+        
+        .faq-answer p {
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        /* Footer - Same as index.html */
+        .footer {
+            background: linear-gradient(135deg, var(--islamic-blue) 0%, #0a2d4d 100%);
+            color: white;
+            padding: 80px 20px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(42, 157, 143, 0.1) 0%, transparent 50%);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer-col h3 {
+            color: var(--islamic-gold);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            font-family: 'Amiri', serif;
+        }
+        
+        .footer-col h4 {
+            color: var(--islamic-gold);
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--islamic-gold);
+        }
+        
+        .footer-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+        
+        .social-links a:hover {
+            background: var(--islamic-gold);
+            transform: translateY(-5px);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .footer-col a:hover {
+            color: var(--islamic-gold);
+            transform: translateX(5px);
+        }
+        
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .contact-info i {
+            color: var(--islamic-gold);
+            width: 25px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 10px;
+        }
+        
+        /* Navigation Menu Styles */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            position: relative;
+        }
+        
+        .nav-menu a {
+            color: var(--islamic-blue);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--islamic-gold);
+            background: rgba(13, 59, 102, 0.05);
+        }
+        
+        .nav-menu a.active {
+            color: var(--islamic-gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+        
+        .login-btn {
+            background: linear-gradient(135deg, var(--islamic-gold) 0%, #ffd700 100%);
+            color: var(--islamic-blue) !important;
+            padding: 12px 25px !important;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease !important;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+            background: linear-gradient(135deg, #ffd700 0%, var(--islamic-gold) 100%);
+        }
+        
+        /* Dropdown Menu Styles */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 250px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-radius: 15px;
+            padding: 15px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+            border: 1px solid #eee;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu li {
+            width: 100%;
+        }
+        
+        .dropdown-menu a {
+            padding: 12px 25px;
+            color: #555;
+            font-weight: 500;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-menu a:hover {
+            color: var(--islamic-blue);
+            background: rgba(13, 59, 102, 0.05);
+            padding-left: 35px;
+        }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--islamic-blue);
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 40px 20px;
+                transition: left 0.3s ease;
+                gap: 10px;
+                overflow-y: auto;
+            }
+            
+            .nav-menu.show {
+                left: 0;
+            }
+            
+            .nav-menu a {
+                padding: 20px;
+                border-radius: 10px;
+                justify-content: flex-start;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: #f8f9fa;
+                margin: 10px 0;
+                border-radius: 10px;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            .dropdown:hover .dropdown-menu,
+            .dropdown-menu.show {
+                max-height: 500px;
+            }
+            
+            .dropdown-menu a {
+                padding-left: 40px;
+            }
+            
+            .hero-arabic-title {
+                font-size: 3rem;
+            }
+            
+            .hero-english-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-contact-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .hero-contact {
+                padding: 140px 20px 60px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-logo-icon {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .nav-logo-circle {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .nav-logo-inner {
+                width: 25px;
+                height: 25px;
+                font-size: 14px;
+            }
+            
+            .nav-arabic-logo {
+                font-size: 0.9rem;
+            }
+            
+            .hero-arabic-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-english-title {
+                font-size: 1.4rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .contact-form-container {
+                padding: 40px 25px;
+            }
+        }
+        
+        /* Additional Utility Classes */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Success Message */
+        .success-message {
+            background: linear-gradient(135deg, var(--islamic-green) 0%, #0a5c36 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <div class="nav-logo-circle">
+                        <div class="nav-logo-inner">ن</div>
+                        <div class="nav-logo-crescent"></div>
+                    </div>
+                </div>
+                <div class="nav-logo-text">
+                    <span class="nav-arabic-logo">نور دين الإسلام</span>
+                    <span class="nav-english-logo">Noor Deenil Islam</span>
+                </div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="library.html"><i class="fas fa-book"></i> Digital Library</a></li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-database"></i> Resources <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="library.html"><i class="fas fa-book"></i> Digital Library</a></li>
+                        <li><a href="quran-database.html"><i class="fas fa-book-quran"></i> Quran Database</a></li>
+                        <li><a href="hadith-collections.html"><i class="fas fa-book"></i> Hadith Collections</a></li>
+                        <li><a href="biblical-studies.html"><i class="fas fa-bible"></i> Biblical Studies</a></li>
+                        <li><a href="academic-research.html"><i class="fas fa-graduation-cap"></i> Academic Research</a></li>
+                        <li><a href="comparative-religion.html"><i class="fas fa-balance-scale"></i> Comparative Religion</a></li>
+                        <li><a href="philosophy-psychology.html"><i class="fas fa-brain"></i> Philosophy & Psychology</a></li>
+                        <li><a href="science-islam.html"><i class="fas fa-atom"></i> Science & Islam</a></li>
+                        <li><a href="historical-evidence.html"><i class="fas fa-history"></i> Historical Evidence</a></li>
+                    </ul>
+                </li>
+                <li><a href="issues-solutions.html"><i class="fas fa-globe-americas"></i> Global Issues & Solutions</a></li>
+                <li><a href="#evidence"><i class="fas fa-university"></i> Academic Evidence</a></li>
+                <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="login.html" class="login-btn"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contact Hero Section -->
+    <section class="hero-contact">
+        <div class="hero-contact-container">
+            <div class="hero-contact-title">
+                <h1 class="hero-arabic-title">اتصل بنا</h1>
+                <h2 class="hero-english-title">Contact Us</h2>
+                <p class="hero-contact-subtitle">Connect with Islamic Scholars and Educators</p>
+            </div>
+            
+            <div class="hero-contact-description">
+                <p>
+                    Have questions about Islam, need clarification on Islamic teachings, 
+                    or want to enroll in our courses? Our team of qualified scholars and educators 
+                    are here to guide you on your journey to understanding Islam through evidence-based knowledge.
+                </p>
+                <div class="hero-contact-buttons">
+                    <a href="#contact-form" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </a>
+                    <a href="#faq" class="btn btn-secondary">
+                        <i class="fas fa-question-circle"></i> View FAQ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form & Information Section -->
+    <section class="contact-main-section" id="contact-form">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h3 class="form-title"><i class="fas fa-envelope"></i> Send Us a Message</h3>
+                    <form id="contactForm" class="contact-form">
+                        <div class="success-message" id="successMessage">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>Thank You!</h3>
+                            <p>Your message has been sent successfully. We will respond within 24-48 hours insha'Allah.</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="name"><i class="fas fa-user"></i> Full Name *</label>
+                            <input type="text" id="name" name="name" class="form-input" required 
+                                   placeholder="Enter your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email"><i class="fas fa-envelope"></i> Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-input" required 
+                                   placeholder="Enter your email address">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject"><i class="fas fa-tag"></i> Subject *</label>
+                            <select id="subject" name="subject" class="form-select" required>
+                                <option value="">Select a topic</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="enrollment">Course Enrollment</option>
+                                <option value="islamic_questions">Islamic Questions</option>
+                                <option value="dawah_training">Dawah Training</option>
+                                <option value="technical">Technical Support</option>
+                                <option value="partnership">Partnership Opportunities</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message"><i class="fas fa-comment"></i> Message *</label>
+                            <textarea id="message" name="message" class="form-textarea" required 
+                                      placeholder="Write your message here..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="contact-info-grid">
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email Address</h3>
+                        <p><a href="mailto:abdurasheedt411@gmail.com">abdurasheedt411@gmail.com</a></p>
+                        <p>For general inquiries and support</p>
+                    </div>
+                    
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>Phone Number</h3>
+                        <p><a href="tel:+260776364223">+260 776 364 223</a></p>
+                        <p>Available during business hours (GMT)</p>
+                    </div>
+                    
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Business Hours</h3>
+                        <p><strong>Monday - Friday:</strong> 9:00 AM - 5:00 PM</p>
+                        <p><strong>Saturday - Sunday:</strong> 10:00 AM - 2:00 PM</p>
+                        <p>All times are in GMT</p>
+                    </div>
+                    
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>Website & Social</h3>
+                        <p><strong>Website:</strong> www.noordeenilislam.com</p>
+                        <p><strong>Social Media:</strong> @NoorDeenilIslam</p>
+                        <p>Follow us for updates and announcements</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        <span>Is this website only for Muslims?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, our content is designed for everyone - Muslims seeking to deepen their knowledge, non-Muslims exploring Islam, students of comparative religion, and anyone interested in evidence-based understanding of Islam. We provide resources suitable for all backgrounds and levels of understanding.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How authentic are your sources?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We use only authentic Islamic sources (Quran with verified translations, Sahih Hadith collections), academic biblical studies, peer-reviewed scientific research, and historical documents. All references are properly cited and cross-checked by our team of scholars to ensure accuracy and authenticity.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer one-on-one counseling?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we have qualified scholars available for personal guidance on Islamic matters, comparative religion questions, and spiritual counseling. You can schedule a consultation through our contact form by selecting "Islamic Questions" as your subject.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I contribute content to your website?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we welcome scholarly contributions from qualified individuals. Please contact us with your qualifications and proposed topics for review. All submissions undergo a rigorous review process by our editorial board to ensure they meet our standards of accuracy and quality.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Are there physical classes or is everything online?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Currently all classes are conducted online through our learning platform, making them accessible to students worldwide. We plan to establish physical centers in the future insha'Allah. However, our online platform provides interactive live sessions, recorded lectures, and one-on-one mentorship.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Are the courses free or paid?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>All basic Islamic education courses are completely free as part of our mission to spread authentic Islamic knowledge. We also offer advanced certificate programs with nominal fees to support our operations. Scholarships are available for those who cannot afford the fees.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Noor Deenil Islam</h3>
+                    <p class="footer-description">
+                        Spreading the light of divine guidance through knowledge, wisdom, and evidence-based understanding.
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="library.html">Digital Library</a></li>
+                        <li><a href="issues-solutions.html">Global Issues</a></li>
+                        <li><a href="#evidence">Academic Evidence</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="quran-database.html">Quran Database</a></li>
+                        <li><a href="hadith-collections.html">Hadith Collections</a></li>
+                        <li><a href="biblical-studies.html">Biblical Studies</a></li>
+                        <li><a href="academic-research.html">Academic Research</a></li>
+                        <li><a href="science-islam.html">Science & Islam</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> abdurasheedt411@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> +260 776 364 223</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Global Online Platform</p>
+                        <p><i class="fas fa-globe"></i> www.noordeenilislam.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Noor Deenil Islam. All rights reserved.</p>
+                <p>"Seeking knowledge is obligatory upon every Muslim" - Prophet Muhammad ﷺ</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('show');
+            this.innerHTML = navMenu.classList.contains('show') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Dropdown toggle for mobile
+        document.querySelectorAll('.dropdown > a').forEach(dropdown => {
+            dropdown.addEventListener('click', function(e) {
+                if (window.innerWidth <= 1024) {
+                    e.preventDefault();
+                    const menu = this.nextElementSibling;
+                    menu.classList.toggle('show');
+                }
+            });
+        });
+        
+        // FAQ accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const item = this.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                });
+                
+                // Toggle current item
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+        
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value.trim()
+            };
+            
+            // Validation
+            let isValid = true;
+            let errorMessage = '';
+            
+            if (!formData.name) {
+                isValid = false;
+                errorMessage = 'Please enter your full name.';
+                document.getElementById('name').focus();
+            } else if (!formData.email || !isValidEmail(formData.email)) {
+                isValid = false;
+                errorMessage = 'Please enter a valid email address.';
+                document.getElementById('email').focus();
+            } else if (!formData.subject) {
+                isValid = false;
+                errorMessage = 'Please select a subject.';
+                document.getElementById('subject').focus();
+            } else if (!formData.message || formData.message.length < 10) {
+                isValid = false;
+                errorMessage = 'Please enter a message with at least 10 characters.';
+                document.getElementById('message').focus();
+            }
+            
+            if (!isValid) {
+                alert(errorMessage);
+                return;
+            }
+            
+            // Show success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.add('show');
+            
+            // Reset form
+            setTimeout(() => {
+                document.getElementById('contactForm').reset();
+                successMessage.classList.remove('show');
+                
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 5000);
+            
+            // In a real application, you would send this data to a server
+            console.log('Form submitted:', formData);
+            
+            // Example using fetch API:
+            /*
+            fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Show success message
+                successMessage.classList.add('show');
+                
+                // Reset form after 5 seconds
+                setTimeout(() => {
+                    document.getElementById('contactForm').reset();
+                    successMessage.classList.remove('show');
+                }, 5000);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error sending your message. Please try again.');
+            });
+            */
+        });
+        
+        // Email validation function
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (window.innerWidth <= 1024) {
+                        document.getElementById('navMenu').classList.remove('show');
+                        document.getElementById('mobileMenuBtn').innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+        });
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.dropdown') && !event.target.closest('.mobile-menu-btn')) {
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

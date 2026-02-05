@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Noor Deenil Islam</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Open+Sans:wght@300;400;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --islamic-blue: #0d3b66;
+            --islamic-gold: #d4af37;
+            --islamic-teal: #2a9d8f;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #0d3b66 0%, #1a5f8b 50%, #2a9d8f 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .login-container {
+            width: 100%;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 700px;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Left Side - Islamic Design */
+        .login-hero {
+            background: linear-gradient(135deg, rgba(13, 59, 102, 0.9) 0%, rgba(26, 95, 139, 0.9) 100%);
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .login-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        }
+        
+        .hero-logo {
+            margin-bottom: 60px;
+        }
+        
+        .logo-circle {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, var(--islamic-gold) 0%, transparent 50%),
+                      linear-gradient(135deg, rgba(13, 59, 102, 0.8) 0%, rgba(42, 157, 143, 0.8) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            position: relative;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 100px rgba(212, 175, 55, 0.2),
+                inset 0 0 50px rgba(255, 255, 255, 0.1);
+            border: 5px solid rgba(212, 175, 55, 0.5);
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .logo-inner {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: var(--islamic-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--islamic-gold);
+            font-family: 'Amiri', serif;
+            font-size: 60px;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            border: 3px solid var(--islamic-gold);
+        }
+        
+        .hero-title {
+            font-family: 'Amiri', serif;
+            font-size: 3rem;
+            background: linear-gradient(135deg, #ffffff 0%, var(--islamic-gold) 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .hero-subtitle {
+            color: white;
+            text-align: center;
+            font-size: 1.2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        /* Right Side - Login Form */
+        .login-form {
+            background: white;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .form-header h2 {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            color: var(--islamic-blue);
+            margin-bottom: 10px;
+        }
+        
+        .form-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        /* Role Selection */
+        .role-selection {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .role-option {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .role-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .role-option.selected {
+            background: linear-gradient(135deg, rgba(13, 59, 102, 0.1) 0%, rgba(42, 157, 143, 0.1) 100%);
+            border-color: var(--islamic-gold);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+        }
+        
+        .role-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--islamic-blue) 0%, var(--islamic-teal) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin: 0 auto 15px;
+        }
+        
+        .role-option.selected .role-icon {
+            background: linear-gradient(135deg, var(--islamic-gold) 0%, #ffd700 100%);
+        }
+        
+        .role-name {
+            font-weight: 600;
+            color: var(--islamic-blue);
+            margin-bottom: 5px;
+        }
+        
+        .role-desc {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--islamic-blue);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--islamic-teal);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.1);
+        }
+        
+        .input-with-icon {
+            position: relative;
+        }
+        
+        .input-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--islamic-blue);
+        }
+        
+        .input-with-icon .form-input {
+            padding-left: 50px;
+        }
+        
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .forgot-password {
+            color: var(--islamic-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .forgot-password:hover {
+            color: var(--islamic-gold);
+        }
+        
+        /* Login Button */
+        .login-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--islamic-gold) 0%, #ffd700 100%);
+            color: var(--islamic-blue);
+            border: none;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
+        }
+        
+        .login-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        /* Demo Credentials */
+        .demo-credentials {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            border-left: 4px solid var(--islamic-gold);
+        }
+        
+        .demo-credentials h4 {
+            color: var(--islamic-blue);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        
+        .credential-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .credential-badge {
+            background: var(--islamic-blue);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .credential-info {
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .login-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .login-hero {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .login-form {
+                padding: 30px;
+            }
+            
+            .role-selection {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <!-- Left Side - Islamic Design -->
+        <div class="login-hero">
+            <div class="hero-logo">
+                <div class="logo-circle">
+                    <div class="logo-inner">ن</div>
+                </div>
+            </div>
+            <h1 class="hero-title">نور دين الإسلام</h1>
+            <p class="hero-subtitle">
+                Enter the portal of divine knowledge<br>
+                Access comprehensive Islamic education resources
+            </p>
+        </div>
+        
+        <!-- Right Side - Login Form -->
+        <div class="login-form">
+            <div class="form-header">
+                <h2>Welcome Back</h2>
+                <p>Sign in to access your account</p>
+            </div>
+            
+            <!-- Role Selection -->
+            <div class="role-selection" id="roleSelection">
+                <div class="role-option" data-role="student">
+                    <div class="role-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="role-name">Student</div>
+                    <div class="role-desc">Access courses & resources</div>
+                </div>
+                
+                <div class="role-option" data-role="teacher">
+                    <div class="role-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="role-name">Teacher</div>
+                    <div class="role-desc">Manage classes & students</div>
+                </div>
+                
+                <div class="role-option" data-role="admin">
+                    <div class="role-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="role-name">Administrator</div>
+                    <div class="role-desc">Full system access</div>
+                </div>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Address</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input type="email" id="email" class="form-input" placeholder="Enter your email" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" id="password" class="form-input" placeholder="Enter your password" required>
+                    </div>
+                </div>
+                
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox" id="remember">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                
+                <button type="submit" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i> Sign In
+                </button>
+            </form>
+            
+            <!-- Demo Credentials -->
+            <div class="demo-credentials">
+                <h4><i class="fas fa-key"></i> Demo Credentials</h4>
+                <div class="credentials-grid">
+                    <div class="credential-item">
+                        <span class="credential-badge">Admin</span>
+                        <span class="credential-info">admin@noordeenilislam.com | password: Admin@123</span>
+                    </div>
+                    <div class="credential-item">
+                        <span class="credential-badge">Teacher</span>
+                        <span class="credential-info">teacher@noordeenilislam.com | password: Teacher@123</span>
+                    </div>
+                    <div class="credential-item">
+                        <span class="credential-badge">Student</span>
+                        <span class="credential-info">student@noordeenilislam.com | password: Student@123</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Role Selection
+        const roleOptions = document.querySelectorAll('.role-option');
+        let selectedRole = 'student';
+        
+        roleOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove selected class from all options
+                roleOptions.forEach(opt => opt.classList.remove('selected'));
+                
+                // Add selected class to clicked option
+                this.classList.add('selected');
+                
+                // Update selected role
+                selectedRole = this.getAttribute('data-role');
+                
+                console.log(`Selected role: ${selectedRole}`);
+            });
+        });
+        
+        // Set default selection
+        roleOptions[0].classList.add('selected');
+        
+        // Form Submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+            
+            // Simple validation
+            if (!email || !password) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Simulate authentication (In real app, this would be an API call)
+            authenticateUser(email, password, selectedRole);
+        });
+        
+        // Authentication function
+        function authenticateUser(email, password, role) {
+            // Demo credentials
+            const demoCredentials = {
+                'admin': { email: 'admin@noordeenilislam.com', password: 'Admin@123' },
+                'teacher': { email: 'teacher@noordeenilislam.com', password: 'Teacher@123' },
+                'student': { email: 'student@noordeenilislam.com', password: 'Student@123' }
+            };
+            
+            // Check if credentials match any demo account
+            const creds = demoCredentials[role];
+            if (email === creds.email && password === creds.password) {
+                // Store user info in localStorage (simulated session)
+                const userData = {
+                    email: email,
+                    role: role,
+                    name: getDemoUserName(role),
+                    loggedIn: true,
+                    timestamp: new Date().toISOString()
+                };
+                
+                localStorage.setItem('currentUser', JSON.stringify(userData));
+                
+                // Redirect based on role
+                redirectToDashboard(role);
+            } else {
+                // Check if it matches any other role
+                let matched = false;
+                for (const [r, cred] of Object.entries(demoCredentials)) {
+                    if (email === cred.email && password === cred.password) {
+                        alert(`You are logging in as a ${r}. Please select the ${r} role.`);
+                        matched = true;
+                        break;
+                    }
+                }
+                
+                if (!matched) {
+                    alert('Invalid credentials. Please try again or use demo credentials.');
+                }
+            }
+        }
+        
+        function getDemoUserName(role) {
+            const names = {
+                'admin': 'Abdullah Al-Qurashi',
+                'teacher': 'Ahmed Hassan',
+                'student': 'Fatima Ali'
+            };
+            return names[role] || 'User';
+        }
+        
+        function redirectToDashboard(role) {
+            // Show loading state
+            const btn = document.querySelector('.login-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecting...';
+            btn.disabled = true;
+            
+            // Simulate API delay
+            setTimeout(() => {
+                switch(role) {
+                    case 'admin':
+                        window.location.href = 'admin-dashboard.html';
+                        break;
+                    case 'teacher':
+                        window.location.href = 'teacher-dashboard.html';
+                        break;
+                    case 'student':
+                        window.location.href = 'student-dashboard.html';
+                        break;
+                    default:
+                        window.location.href = 'index.html';
+                }
+            }, 1500);
+        }
+        
+        // Forgot Password
+        document.querySelector('.forgot-password').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Password reset link would be sent to your email. For demo, use: Admin@123 / Teacher@123 / Student@123');
+        });
+        
+        // Auto-fill demo credentials based on role selection
+        roleOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                const role = this.getAttribute('data-role');
+                const demoCredentials = {
+                    'admin': { email: 'admin@noordeenilislam.com', password: 'Admin@123' },
+                    'teacher': { email: 'teacher@noordeenilislam.com', password: 'Teacher@123' },
+                    'student': { email: 'student@noordeenilislam.com', password: 'Student@123' }
+                };
+                
+                const creds = demoCredentials[role];
+                if (confirm(`Auto-fill ${role} demo credentials?`)) {
+                    document.getElementById('email').value = creds.email;
+                    document.getElementById('password').value = creds.password;
+                }
+            });
+        });
+        
+        // Check for existing session
+        window.addEventListener('load', function() {
+            const currentUser = localStorage.getItem('currentUser');
+            if (currentUser) {
+                const user = JSON.parse(currentUser);
+                if (confirm(`You're already logged in as ${user.name} (${user.role}). Log out?`)) {
+                    localStorage.removeItem('currentUser');
+                } else {
+                    redirectToDashboard(user.role);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1304 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Islamic Color Palette */
+    --primary-color: #1a472a; /* Deep Islamic Green */
+    --secondary-color: #d4af37; /* Gold for elegance */
+    --accent-color: #8b4513; /* Earth tone for warmth */
+    --light-color: #f8f6f0; /* Cream background */
+    --dark-color: #0d1f0d; /* Deep green-black */
+    --text-color: #2c3e2c; /* Dark green text */
+    
+    /* Islamic Geometric Colors */
+    --geometric-blue: #2c5f8a;
+    --geometric-turquoise: #3a9b9b;
+    --geometric-purple: #6a4c93;
+    
+    /* Fonts */
+    --arabic-font: 'Amiri', 'Lateef', 'Scheherazade', serif;
+    --english-font: 'Open Sans', 'Poppins', sans-serif;
+    --heading-font: 'Montserrat', 'Raleway', sans-serif;
+    
+    /* Effects */
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.12);
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --border-radius: 12px;
+}
+
+body {
+    font-family: var(--english-font);
+    color: var(--text-color);
+    line-height: 1.7;
+    overflow-x: hidden;
+    background: var(--light-color);
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(218, 165, 32, 0.03) 0%, transparent 55%),
+        radial-gradient(circle at 85% 30%, rgba(26, 71, 42, 0.03) 0%, transparent 55%);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+/* Islamic Geometric Background Patterns */
+.islamic-pattern {
+    position: absolute;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.pattern-1 {
+    background-image: 
+        radial-gradient(circle at 20% 80%, var(--primary-color) 2px, transparent 3px),
+        radial-gradient(circle at 40% 20%, var(--secondary-color) 2px, transparent 3px),
+        radial-gradient(circle at 80% 50%, var(--accent-color) 2px, transparent 3px);
+    background-size: 100px 100px, 150px 150px, 200px 200px;
+    width: 100%;
+    height: 100%;
+}
+
+/* Typography Enhancement */
+.arabic-title {
+    font-family: var(--arabic-font);
+    font-size: 4rem;
+    display: block;
+    color: var(--secondary-color);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.arabic-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
+}
+
+.english-title {
+    display: block;
+    font-family: var(--heading-font);
+    font-size: 2.8rem;
+    margin-top: 25px;
+    color: white;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.section-title {
+    font-family: var(--heading-font);
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 4rem;
+    color: var(--primary-color);
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.section-title::before {
+    content: '✦';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        var(--primary-color), 
+        var(--secondary-color), 
+        var(--primary-color)
+    );
+    border-radius: 2px;
+}
+
+/* Enhanced Navigation */
+.navbar {
+    background: rgba(26, 71, 42, 0.95);
+    backdrop-filter: blur(15px);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    padding: 0;
+    border-bottom: 3px solid var(--secondary-color);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    height: 80px;
+}
+
+.logo {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: var(--transition);
+}
+
+.logo:hover {
+    transform: translateY(-2px);
+}
+
+.arabic-logo {
+    font-family: var(--arabic-font);
+    font-size: 2rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, var(--secondary-color), #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.english-logo {
+    font-family: var(--heading-font);
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 1px;
+    margin-top: 3px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    position: relative;
+    font-size: 1rem;
+}
+
+.nav-menu a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--secondary-color);
+    transition: var(--transition);
+}
+
+.nav-menu a:hover {
+    color: var(--secondary-color);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-menu a:hover::before {
+    width: 70%;
+}
+
+.nav-menu a.active {
+    color: var(--secondary-color);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-menu a.active::before {
+    width: 70%;
+    background: var(--secondary-color);
+}
+
+.login-btn {
+    background: linear-gradient(135deg, var(--secondary-color), #ffed4e);
+    color: var(--dark-color) !important;
+    padding: 10px 25px !important;
+    border-radius: 8px;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+/* Enhanced Dropdown */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    background: rgba(26, 71, 42, 0.98);
+    min-width: 250px;
+    box-shadow: var(--shadow-hover);
+    border-radius: var(--border-radius);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: var(--transition);
+    list-style: none;
+    padding: 10px 0;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    padding: 0;
+}
+
+.dropdown-menu a {
+    padding: 12px 25px;
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.9);
+    transition: var(--transition);
+}
+
+.dropdown-menu a:hover {
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--secondary-color);
+    padding-left: 30px;
+}
+
+/* Enhanced Hero Section */
+.hero {
+    padding: 160px 0 100px;
+    background: linear-gradient(135deg, 
+        #0d1f0d 0%, 
+        #1a472a 40%, 
+        #2c5f2d 100%
+    );
+    color: white;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    z-index: 1;
+}
+
+.hero .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.8rem;
+    color: var(--secondary-color);
+    margin-bottom: 2rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    font-family: var(--heading-font);
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+    line-height: 1.8;
+    max-width: 600px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 16px 35px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--secondary-color), #ffed4e);
+    color: var(--dark-color);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+    transform: translateY(-5px);
+}
+
+/* Enhanced Monotheism Section */
+.monotheism-section {
+    padding: 100px 0;
+    background: var(--light-color);
+    position: relative;
+}
+
+.etymology-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+}
+
+.etymology-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.etymology-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+}
+
+.etymology-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.etymology-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.etymology-header i {
+    font-size: 2.5rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--geometric-turquoise));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.etymology-header h3 {
+    font-size: 1.8rem;
+    font-family: var(--heading-font);
+}
+
+.etymology-content p {
+    margin-bottom: 12px;
+    padding-left: 25px;
+    position: relative;
+    line-height: 1.6;
+}
+
+.etymology-content p::before {
+    content: ''; /* FontAwesome chevron */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--secondary-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Enhanced Evidence Section */
+.evidence-section {
+    padding: 100px 0;
+    background: white;
+    position: relative;
+}
+
+.tab-headers {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3.5rem;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 15px 35px;
+    background: var(--light-color);
+    border: 2px solid transparent;
+    border-radius: var(--border-radius);
+    font-family: var(--heading-font);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--text-color);
+    font-size: 1.1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.tab-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-color), var(--geometric-turquoise));
+    opacity: 0;
+    transition: var(--transition);
+    z-index: -1;
+}
+
+.tab-btn.active {
+    color: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 5px 20px rgba(26, 71, 42, 0.2);
+}
+
+.tab-btn.active::before {
+    opacity: 1;
+}
+
+.tab-btn:hover:not(.active) {
+    background: rgba(26, 71, 42, 0.05);
+    border-color: rgba(26, 71, 42, 0.2);
+    transform: translateY(-2px);
+}
+
+.tab-content {
+    background: var(--light-color);
+    border-radius: var(--border-radius);
+    padding: 3rem;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.tab-pane {
+    display: none;
+    animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+.evidence-list {
+    list-style: none;
+}
+
+.evidence-list li {
+    padding: 20px;
+    background: white;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border-left: 5px solid var(--primary-color);
+    transition: var(--transition);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+}
+
+.evidence-list li:hover {
+    transform: translateX(10px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.reference {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--geometric-turquoise);
+    margin-top: 8px;
+    font-style: italic;
+    padding-left: 10px;
+    border-left: 2px solid var(--secondary-color);
+}
+
+/* Enhanced Courses Section */
+.courses-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, 
+        rgba(248, 246, 240, 0.9) 0%, 
+        rgba(232, 245, 232, 0.9) 100%
+    );
+    position: relative;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+}
+
+.course-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.course-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.course-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+}
+
+.course-icon {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--geometric-turquoise));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(26, 71, 42, 0.1);
+}
+
+.course-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-family: var(--heading-font);
+}
+
+.course-card ul {
+    list-style: none;
+    text-align: left;
+}
+
+.course-card li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    padding-left: 30px;
+    transition: var(--transition);
+}
+
+.course-card li:hover {
+    color: var(--primary-color);
+    padding-left: 35px;
+}
+
+.course-card li::before {
+    content: '✓';
+    color: var(--secondary-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Enhanced Footer */
+.footer {
+    background: var(--dark-color);
+    color: white;
+    padding: 80px 0 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 4rem;
+    margin-bottom: 4rem;
+}
+
+.footer h3, .footer h4 {
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    font-family: var(--heading-font);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer h3::after, .footer h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: var(--secondary-color);
+}
+
+.footer a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.footer a:hover {
+    color: var(--secondary-color);
+    transform: translateX(5px);
+}
+
+.footer ul {
+    list-style: none;
+}
+
+.footer ul li {
+    margin-bottom: 12px;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    font-size: 1.3rem;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    background: var(--secondary-color);
+    color: var(--dark-color);
+    transform: translateY(-5px) rotate(5deg);
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.contact-info i {
+    color: var(--secondary-color);
+    width: 20px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-bottom p:first-child {
+    margin-bottom: 10px;
+}
+/* Look for this in your style.css file */
+
+/* Enhanced Footer */
+.footer {
+    background: var(--dark-color);
+    color: white;
+    padding: 80px 0 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ... footer CSS code ... */
+
+.footer-bottom p:first-child {
+    margin-bottom: 10px;
+}
+
+/* ⬇⬇⬇ ADD THE QURANIC WISDOM SECTION CSS HERE ⬇⬇⬇ */
+
+/* Quranic Wisdom Section */
+.quranic-wisdom {
+    padding: 80px 0;
+    background: linear-gradient(135deg, 
+        rgba(248, 246, 240, 0.9) 0%, 
+        rgba(255, 255, 255, 1) 100%
+    );
+    position: relative;
+    overflow: hidden;
+}
+
+.quranic-wisdom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231a472a' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.3;
+}
+
+.wisdom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.wisdom-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.wisdom-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--geometric-blue), var(--geometric-turquoise));
+}
+
+.wisdom-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.wisdom-icon {
+    font-size: 3rem;
+    color: var(--geometric-blue);
+    margin-bottom: 1.5rem;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(44, 95, 138, 0.1), rgba(58, 155, 155, 0.1));
+}
+
+.wisdom-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-family: var(--heading-font);
+}
+
+.wisdom-card p {
+    color: var(--text-color);
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+
+/* ⬆⬆⬆ END OF QURANIC WISDOM SECTION CSS ⬆⬆⬆ */
+
+/* Mobile Menu Enhancement */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: white;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+}
+
+/* Mobile Menu Enhancement */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: white;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+}
+
+.mobile-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+/* Floating Elements Enhancement */
+.floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.floating-item {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    color: var(--secondary-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-25px) rotate(5deg);
+    }
+}
+
+.floating-item.quran {
+    top: 20%;
+    left: 20%;
+    background: rgba(26, 71, 42, 0.2);
+    animation-delay: 0s;
+}
+
+.floating-item.science {
+    top: 60%;
+    right: 20%;
+    background: rgba(58, 155, 155, 0.2);
+    animation-delay: 2s;
+}
+
+.floating-item.philosophy {
+    bottom: 20%;
+    left: 40%;
+    background: rgba(106, 76, 147, 0.2);
+    animation-delay: 4s;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero .container {
+        gap: 3rem;
+    }
+    
+    .arabic-title {
+        font-size: 3rem;
+    }
+    
+    .english-title {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        flex-direction: column;
+        background: rgba(26, 71, 42, 0.98);
+        width: 100%;
+        height: calc(100vh - 80px);
+        padding: 2rem;
+        transition: var(--transition);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(15px);
+        z-index: 999;
+        overflow-y: auto;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .hero .container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+    }
+    
+    .arabic-title {
+        font-size: 2.5rem;
+    }
+    
+    .english-title {
+        font-size: 2rem;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .etymology-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tab-headers {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .tab-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .courses-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Quranic Verse Calligraphy Effect */
+.quranic-calligraphy {
+    font-family: var(--arabic-font);
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    text-align: center;
+    padding: 40px;
+    background: linear-gradient(45deg, 
+        rgba(26, 71, 42, 0.05), 
+        rgba(212, 175, 55, 0.05)
+    );
+    border-radius: var(--border-radius);
+    margin: 50px auto;
+    max-width: 800px;
+    position: relative;
+    overflow: hidden;
+}
+
+.quranic-calligraphy::before {
+    content: ''; /* Quran icon */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: rgba(26, 71, 42, 0.1);
+    font-size: 4rem;
+}
+
+/* Islamic Geometric Patterns Overlay */
+.geometric-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%231a472a' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Prayer Times Widget Style */
+.prayer-times {
+    background: linear-gradient(135deg, var(--primary-color), var(--geometric-turquoise));
+    color: white;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: var(--shadow);
+}
+
+.prayer-times h3 {
+    color: var(--secondary-color);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-family: var(--arabic-font);
+    font-size: 1.8rem;
+}
+
+/* Loading Animation */
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(26, 71, 42, 0.1);
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 2rem auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-color), var(--geometric-turquoise));
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 20px rgba(26, 71, 42, 0.3);
+    transition: var(--transition);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(26, 71, 42, 0.4);
+}
+
+/* Quran Page Flip Animation */
+.quran-page {
+    perspective: 1000px;
+}
+
+.quran-page-inner {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.quran-page:hover .quran-page-inner {
+    transform: rotateY(180deg);
+}
+
+.quran-page-front, .quran-page-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.quran-page-front {
+    background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+    color: white;
+}
+
+.quran-page-back {
+    background: white;
+    color: var(--text-color);
+    transform: rotateY(180deg);
+    box-shadow: var(--shadow);
+}
+/* Islamic Art Background Patterns */
+.islamic-art-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -2;
+    opacity: 0.03;
+}
+
+.art-pattern-1 {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    width: 300px;
+    height: 300px;
+    background: 
+        radial-gradient(circle at 30% 30%, var(--geometric-blue) 2px, transparent 3px),
+        radial-gradient(circle at 70% 70%, var(--geometric-turquoise) 2px, transparent 3px);
+    background-size: 50px 50px;
+    animation: rotate 100s linear infinite;
+}
+
+.art-pattern-2 {
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+    width: 400px;
+    height: 400px;
+    background: 
+        linear-gradient(45deg, transparent 49%, var(--geometric-purple) 49%, var(--geometric-purple) 51%, transparent 51%),
+        linear-gradient(-45deg, transparent 49%, var(--geometric-purple) 49%, var(--geometric-purple) 51%, transparent 51%);
+    background-size: 60px 60px;
+    animation: rotate-reverse 120s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes rotate-reverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
+
+/* Responsive adjustments for patterns */
+@media (max-width: 768px) {
+    .art-pattern-1,
+    .art-pattern-2 {
+        display: none;
+    }
+}

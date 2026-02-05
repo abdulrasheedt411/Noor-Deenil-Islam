@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Noor Deenil Islam</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Open+Sans:wght@300;400;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --islamic-blue: #0d3b66;
+            --islamic-gold: #d4af37;
+            --islamic-teal: #2a9d8f;
+            --islamic-green: #0a5c36;
+            --islamic-red: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        /* Navigation */
+        .admin-navbar {
+            background: linear-gradient(135deg, var(--islamic-blue) 0%, #0a2d4d 100%);
+            color: white;
+            padding: 0 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+        
+        .brand-logo {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--islamic-gold) 0%, #ffd700 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--islamic-blue);
+            font-family: 'Amiri', serif;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .brand-arabic {
+            font-family: 'Amiri', serif;
+            font-size: 1.2rem;
+        }
+        
+        .brand-english {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            margin-top: 2px;
+        }
+        
+        .nav-user {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .user-info {
+            text-align: right;
+        }
+        
+        .user-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .user-role {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 10px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 3px;
+        }
+        
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--islamic-gold) 0%, #ffd700 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--islamic-blue);
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(231, 76, 60, 0.2);
+            border-color: var(--islamic-red);
+        }
+        
+        /* Admin Layout */
+        .admin-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: 100vh;
+            padding-top: 75px;
+        }
+        
+        /* Sidebar */
+        .admin-sidebar {
+            background: white;
+            border-right: 1px solid #e9ecef;
+            padding: 30px 20px;
+            box-shadow: 5px 0 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .sidebar-header {
+            padding-bottom: 25px;
+            border-bottom: 1px solid #e9ecef;
+            margin-bottom: 25px;
+        }
+        
+        .sidebar-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.4rem;
+            color: var(--islamic-blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+        }
+        
+        .sidebar-item {
+            margin-bottom: 10px;
+        }
+        
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            color: #555;
+            text-decoration: none;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .sidebar-link:hover {
+            background: linear-gradient(135deg, rgba(13, 59, 102, 0.1) 0%, rgba(42, 157, 143, 0.1) 100%);
+            color: var(--islamic-blue);
+            transform: translateX(5px);
+        }
+        
+        .sidebar-link.active {
+            background: linear-gradient(135deg, var(--islamic-blue) 0%, var(--islamic-teal) 100%);
+            color: white;
+            box-shadow: 0 10px 20px rgba(13, 59, 102, 0.2);
+        }
+        
+        .sidebar-link.active i {
+            color: var(--islamic-gold);
+        }
+        
+        .sidebar-icon {
+            width: 25px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        /* Main Content */
+        .admin-main {
+            padding: 40px;
+            background: #f8f9fa;
+        }
+        
+        .admin-header {
+            margin-bottom: 40px;
+        }
+        
+        .admin-title {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            color: var(--islamic-blue);
+            margin-bottom: 15px;
+        }
+        
+        .admin-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 800px;
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(13, 59, 102, 0.15);
+            border-color: var(--islamic-gold);
+        }
+        
+        .stat-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+        
+        .stat-1 .stat-icon { background: linear-gradient(135deg, #3498db, #2980b9); color: white; }
+        .stat-2 .stat-icon { background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; }
+        .stat-3 .stat-icon { background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; }
+        .stat-4 .stat-icon { background: linear-gradient(135deg, var(--islamic-gold), #ffd700); color: var(--islamic-blue); }
+        
+        .stat-content {
+            flex-grow: 1;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--islamic-blue);
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* Tables */
+        .table-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .section-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            color: var(--islamic-blue);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--islamic-gold);
+        }
+        
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .admin-table th {
+            background: #f8f9fa;
+            padding: 15px;
+            text-align: left;
+            color: var(--islamic-blue);
+            font-weight: 600;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .admin-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .admin-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .status-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .status-active { background: #d5f4e6; color: var(--islamic-green); }
+        .status-pending { background: #ffeaa7; color: #d35400; }
+        .status-inactive { background: #ffdde1; color: #c0392b; }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-edit { background: #d5f4e6; color: var(--islamic-green); }
+        .btn-delete { background: #ffdde1; color: #c0392b; }
+        .btn-view { background: #e3f2fd; color: var(--islamic-blue); }
+        
+        .btn-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .action-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .action-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(13, 59, 102, 0.15);
+            border-color: var(--islamic-gold);
+        }
+        
+        .action-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--islamic-blue) 0%, var(--islamic-teal) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin: 0 auto 20px;
+        }
+        
+        .action-title {
+            color: var(--islamic-blue);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .action-desc {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .admin-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .admin-sidebar {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .quick-actions {
+                grid-template-columns: 1fr;
+            }
+            
+            .admin-main {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Check authentication -->
+    <script>
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (!currentUser || currentUser.role !== 'admin') {
+            alert('Access denied. Please login as admin.');
+            window.location.href = 'login.html';
+        }
+    </script>
+
+    <!-- Navigation -->
+    <nav class="admin-navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <div class="brand-logo">ن</div>
+                <div class="brand-text">
+                    <span class="brand-arabic">نور دين الإسلام</span>
+                    <span class="brand-english">Admin Dashboard</span>
+                </div>
+            </a>
+            
+            <div class="nav-user">
+                <div class="user-info">
+                    <div class="user-name" id="adminName"></div>
+                    <div class="user-role">Administrator</div>
+                </div>
+                <div class="user-avatar" id="adminAvatar">A</div>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Admin Layout -->
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <h2 class="sidebar-title">
+                    <i class="fas fa-cogs"></i> Admin Panel
+                </h2>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link active">
+                        <i class="fas fa-tachometer-alt sidebar-icon"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-users sidebar-icon"></i>
+                        User Management
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-chalkboard-teacher sidebar-icon"></i>
+                        Teacher Management
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-user-graduate sidebar-icon"></i>
+                        Student Management
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-book sidebar-icon"></i>
+                        Course Management
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-calendar-alt sidebar-icon"></i>
+                        System Schedule
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-cog sidebar-icon"></i>
+                        System Settings
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-chart-line sidebar-icon"></i>
+                        Analytics
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-file-alt sidebar-icon"></i>
+                        Reports
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <div class="admin-header">
+                <h1 class="admin-title">Administrator Dashboard</h1>
+                <p class="admin-subtitle">
+                    Manage the Noor Deenil Islam platform, monitor system performance, 
+                    and oversee all educational activities.
+                </p>
+            </div>
+
+            <!-- Stats Overview -->
+            <div class="stats-grid">
+                <div class="stat-card stat-1">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="totalUsers">1,248</div>
+                        <div class="stat-label">Total Users</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card stat-2">
+                    <div class="stat-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="totalTeachers">42</div>
+                        <div class="stat-label">Active Teachers</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card stat-3">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="totalStudents">1,156</div>
+                        <div class="stat-label">Active Students</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card stat-4">
+                    <div class="stat-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="totalCourses">28</div>
+                        <div class="stat-label">Active Courses</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Users Table -->
+            <div class="table-section">
+                <h2 class="section-title">Recent Users</h2>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Join Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ahmed Hassan</td>
+                            <td>ahmed@example.com</td>
+                            <td>Teacher</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>2024-01-15</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-icon btn-view"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-icon btn-edit"><i class="fas fa-edit"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Fatima Ali</td>
+                            <td>fatima@example.com</td>
+                            <td>Student</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>2024-02-10</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-icon btn-view"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-icon btn-edit"><i class="fas fa-edit"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Muhammad Khan</td>
+                            <td>muhammad@example.com</td>
+                            <td>Teacher</td>
+                            <td><span class="status-badge status-pending">Pending</span></td>
+                            <td>2024-02-20</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-icon btn-view"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-icon btn-edit"><i class="fas fa-edit"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sarah Johnson</td>
+                            <td>sarah@example.com</td>
+                            <td>Student</td>
+                            <td><span class="status-badge status-inactive">Inactive</span></td>
+                            <td>2024-01-05</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-icon btn-view"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-icon btn-edit"><i class="fas fa-edit"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="table-section">
+                <h2 class="section-title">Quick Actions</h2>
+                <div class="quick-actions">
+                    <div class="action-card" onclick="quickAction('addUser')">
+                        <div class="action-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div class="action-title">Add New User</div>
+                        <div class="action-desc">Create new teacher/student account</div>
+                    </div>
+                    
+                    <div class="action-card" onclick="quickAction('createCourse')">
+                        <div class="action-icon">
+                            <i class="fas fa-book-medical"></i>
+                        </div>
+                        <div class="action-title">Create Course</div>
+                        <div class="action-desc">Setup new educational course</div>
+                    </div>
+                    
+                    <div class="action-card" onclick="quickAction('generateReport')">
+                        <div class="action-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="action-title">Generate Report</div>
+                        <div class="action-desc">Create system performance report</div>
+                    </div>
+                    
+                    <div class="action-card" onclick="quickAction('systemSettings')">
+                        <div class="action-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="action-title">System Settings</div>
+                        <div class="action-desc">Configure platform settings</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Load user data
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (currentUser) {
+                document.getElementById('adminName').textContent = currentUser.name;
+                document.getElementById('adminAvatar').textContent = currentUser.name.charAt(0);
+            }
+        });
+        
+        // Quick Actions
+        function quickAction(action) {
+            const actions = {
+                'addUser': 'Opening user creation form...',
+                'createCourse': 'Opening course creation wizard...',
+                'generateReport': 'Generating system report...',
+                'systemSettings': 'Opening system settings...'
+            };
+            alert(actions[action] || 'Action triggered');
+        }
+        
+        // Table actions
+        document.querySelectorAll('.btn-view').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const row = this.closest('tr');
+                const name = row.cells[0].textContent;
+                alert(`Viewing details for: ${name}`);
+            });
+        });
+        
+        document.querySelectorAll('.btn-edit').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const row = this.closest('tr');
+                const name = row.cells[0].textContent;
+                alert(`Editing user: ${name}`);
+            });
+        });
+        
+        // Logout function
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('currentUser');
+                window.location.href = 'login.html';
+            }
+        }
+        
+        // Update stats (simulated)
+        function updateStats() {
+            // In real app, these would come from API
+            setInterval(() => {
+                document.getElementById('totalUsers').textContent = 
+                    (1248 + Math.floor(Math.random() * 10)).toLocaleString();
+                document.getElementById('totalTeachers').textContent = 
+                    42 + Math.floor(Math.random() * 3);
+                document.getElementById('totalStudents').textContent = 
+                    (1156 + Math.floor(Math.random() * 20)).toLocaleString();
+            }, 5000);
+        }
+        
+        updateStats();
+        
+        // Sidebar navigation
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                
+                const page = this.textContent.trim();
+                alert(`Loading ${page} page...`);
+            });
+        });
+        
+        // User avatar click
+        document.getElementById('adminAvatar').addEventListener('click', function() {
+            alert('Opening admin profile...');
+        });
+    </script>
+</body>
+</html>

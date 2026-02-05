@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Books - Noor Deenil Islam</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Open+Sans:wght@300;400;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .upload-page {
+            padding-top: 120px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, 
+                rgba(248, 246, 240, 0.95) 0%, 
+                rgba(255, 255, 255, 1) 100%
+            );
+        }
+
+        .upload-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .upload-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .upload-title {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            font-family: var(--arabic-font);
+            font-size: 2.5rem;
+        }
+
+        .upload-form {
+            display: grid;
+            gap: 25px;
+        }
+
+        .form-group {
+            display: grid;
+            gap: 8px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-label.required::after {
+            content: '*';
+            color: #ff4757;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(26, 71, 42, 0.1);
+            outline: none;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .file-upload {
+            border: 2px dashed #e0e0e0;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-upload:hover {
+            border-color: var(--primary-color);
+            background: rgba(26, 71, 42, 0.02);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .upload-text {
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        .upload-hint {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .file-preview {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .file-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .file-details h4 {
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+
+        .file-details p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .remove-file {
+            margin-left: auto;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .submit-btn {
+            flex: 1;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--primary-color), var(--geometric-turquoise));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(26, 71, 42, 0.3);
+        }
+
+        .cancel-btn {
+            flex: 1;
+            padding: 18px;
+            background: #f8f9fa;
+            color: var(--text-color);
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cancel-btn:hover {
+            background: #e9ecef;
+        }
+
+        .upload-progress {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--geometric-turquoise));
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        .upload-success {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: #2ecc71;
+            margin-bottom: 20px;
+        }
+
+        .success-title {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+
+        .success-message {
+            color: var(--text-color);
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .upload-container {
+                padding: 20px;
+            }
+            
+            .upload-card {
+                padding: 25px;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">
+                <span class="arabic-logo">نور دين الإسلام</span>
+                <span class="english-logo">Noor Deenil Islam</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html"><i class="fas fa-home"></i>
+                <li><a href="library.html"><i class="fas fa-book"></i> Library</a></li>
+                <li><a href="upload-book.html" class="active"><i class="fas fa-cloud-upload-alt"></i> Upload Book</a></li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-book-open"></i> Classes <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="dawah.html">Dawah Classes</a></li>
+                        <li><a href="arabic.html">Arabic Classes</a></li>
+                        <li><a href="#quran-studies">Quran Studies</a></li>
+                        <li><a href="#hadith-studies">Hadith Studies</a></li>
+                        <li><a href="#fiqh-studies">Fiqh Studies</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="login.html" class="login-btn"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Upload Page -->
+    <section class="upload-page">
+        <div class="container upload-container">
+            <div class="upload-card">
+                <h1 class="upload-title">رفع كتاب جديد</h1>
+                
+                <div id="uploadForm">
+                    <form class="upload-form" id="bookUploadForm">
+                        <div class="form-group">
+                            <label class="form-label required">
+                                <i class="fas fa-heading"></i> Book Title
+                            </label>
+                            <input type="text" class="form-input" id="bookTitle" required 
+                                   placeholder="Enter book title">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label required">
+                                <i class="fas fa-user"></i> Author
+                            </label>
+                            <input type="text" class="form-input" id="bookAuthor" required 
+                                   placeholder="Enter author name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label required">
+                                <i class="fas fa-tag"></i> Category
+                            </label>
+                            <select class="form-select" id="bookCategory" required>
+                                <option value="">Select category</option>
+                                <option value="islamic">Islamic Books</option>
+                                <option value="christian">Christian Books</option>
+                                <option value="jewish">Jewish Books</option>
+                                <option value="comparative">Comparative Religion</option>
+                                <option value="philosophy">Philosophy</option>
+                                <option value="history">History</option>
+                                <option value="science">Science</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label required">
+                                <i class="fas fa-language"></i> Language
+                            </label>
+                            <select class="form-select" id="bookLanguage" required>
+                                <option value="">Select language</option>
+                                <option value="arabic">Arabic</option>
+                                <option value="english">English</option>
+                                <option value="urdu">Urdu</option>
+                                <option value="french">French</option>
+                                <option value="spanish">Spanish</option>
+                                <option value="german">German</option>
+                                <option value="persian">Persian</option>
+                                <option value="turkish">Turkish</option>
+                                <option value="hebrew">Hebrew</option>
+                                <option value="latin">Latin</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-calendar"></i> Publication Year
+                            </label>
+                            <input type="number" class="form-input" id="bookYear" 
+                                   placeholder="e.g., 2024" min="-5000" max="2024">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-file-alt"></i> ISBN (Optional)
+                            </label>
+                            <input type="text" class="form-input" id="bookISBN" 
+                                   placeholder="Enter ISBN number">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label required">
+                                <i class="fas fa-align-left"></i> Description
+                            </label>
+                            <textarea class="form-textarea" id="bookDescription" required 
+                                      placeholder="Provide a detailed description of the book..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label required">
+                                <i class="fas fa-file-upload"></i> Book File
+                            </label>
+                            <div class="file-upload" id="fileUploadArea">
+                                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                                <p class="upload-text">Click to upload or drag and drop</p>
+                                <p class="upload-hint">PDF, EPUB, DOCX (Max: 50MB)</p>
+                                <input type="file" id="fileInput" accept=".pdf,.epub,.docx,.txt">
+                            </div>
+                            <div class="file-preview" id="filePreview">
+                                <div class="file-info">
+                                    <i class="fas fa-file-pdf file-icon"></i>
+                                    <div class="file-details">
+                                        <h4 id="fileName">File Name</h4>
+                                        <p id="fileSize">File Size</p>
+                                    </div>
+                                    <button type="button" class="remove-file" id="removeFile">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="upload-progress" id="uploadProgress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                            <p class="progress-text" id="progressText">Uploading... 0%</p>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="cancel-btn" id="cancelBtn">
+                                Cancel
+                            </button>
+                            <button type="submit" class="submit-btn" id="submitBtn">
+                                <i class="fas fa-upload"></i> Upload Book
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="upload-success" id="uploadSuccess">
+                    <i class="fas fa-check-circle success-icon"></i>
+                    <h2 class="success-title">Book Uploaded Successfully!</h2>
+                    <p class="success-message">
+                        Your book has been added to the digital library. 
+                        It will be available for readers after review.
+                    </p>
+                    <button class="submit-btn" id="uploadAnother">
+                        <i class="fas fa-plus"></i> Upload Another Book
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../script.js"></script>
+    <script>
+        // Book Upload JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            let selectedFile = null;
+            
+            // File upload area click
+            document.getElementById('fileUploadArea').addEventListener('click', () => {
+                document.getElementById('fileInput').click();
+            });
+            
+            // File input change
+            document.getElementById('fileInput').addEventListener('change', handleFileSelect);
+            
+            // Remove file
+            document.getElementById('removeFile').addEventListener('click', removeFile);
+            
+            // Drag and drop
+            const uploadArea = document.getElementById('fileUploadArea');
+            
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.style.borderColor = var('--primary-color');
+                uploadArea.style.background = 'rgba(26, 71, 42, 0.05)';
+            });
+            
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.style.borderColor = '#e0e0e0';
+                uploadArea.style.background = '';
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.style.borderColor = '#e0e0e0';
+                uploadArea.style.background = '';
+                
+                if (e.dataTransfer.files.length) {
+                    handleFileSelect({ target: { files: e.dataTransfer.files } });
+                }
+            });
+            
+            // Form submission
+            document.getElementById('bookUploadForm').addEventListener('submit', handleSubmit);
+            
+            // Cancel button
+            document.getElementById('cancelBtn').addEventListener('click', resetForm);
+            
+            // Upload another
+            document.getElementById('uploadAnother').addEventListener('click', () => {
+                document.getElementById('uploadSuccess').style.display = 'none';
+                document.getElementById('uploadForm').style.display = 'block';
+                resetForm();
+            });
+            
+            function handleFileSelect(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+                
+                // Check file type
+                const allowedTypes = ['application/pdf', 'application/epub+zip', 
+                                     'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 
+                                     'text/plain'];
+                if (!allowedTypes.includes(file.type) && !file.name.match(/\.(pdf|epub|docx|txt)$/i)) {
+                    alert('Please upload a PDF, EPUB, DOCX, or TXT file.');
+                    return;
+                }
+                
+                // Check file size (50MB limit)
+                if (file.size > 50 * 1024 * 1024) {
+                    alert('File size must be less than 50MB.');
+                    return;
+                }
+                
+                selectedFile = file;
+                showFilePreview(file);
+            }
+            
+            function showFilePreview(file) {
+                const fileName = document.getElementById('fileName');
+                const fileSize = document.getElementById('fileSize');
+                const filePreview = document.getElementById('filePreview');
+                
+                fileName.textContent = file.name;
+                fileSize.textContent = formatFileSize(file.size);
+                filePreview.style.display = 'block';
+            }
+            
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+            
+            function removeFile() {
+                selectedFile = null;
+                document.getElementById('fileInput').value = '';
+                document.getElementById('filePreview').style.display = 'none';
+            }
+            
+            async function handleSubmit(e) {
+                e.preventDefault();
+                
+                // Validate form
+                if (!validateForm()) {
+                    return;
+                }
+                
+                // Show progress
+                const uploadProgress = document.getElementById('uploadProgress');
+                const submitBtn = document.getElementById('submitBtn');
+                const progressFill = document.getElementById('progressFill');
+                const progressText = document.getElementById('progressText');
+                
+                uploadProgress.style.display = 'block';
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
+                
+                // Simulate upload progress
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += 10;
+                    progressFill.style.width = progress + '%';
+                    progressText.textContent = `Uploading... ${progress}%`;
+                    
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                        
+                        // Simulate server processing
+                        setTimeout(() => {
+                            // Save book to localStorage (for demo)
+                            saveBookToLibrary();
+                            
+                            // Show success message
+                            uploadProgress.style.display = 'none';
+                            document.getElementById('uploadForm').style.display = 'none';
+                            document.getElementById('uploadSuccess').style.display = 'block';
+                            
+                            // Reset form
+                            resetForm();
+                        }, 500);
+                    }
+                }, 200);
+            }
+            
+            function validateForm() {
+                const title = document.getElementById('bookTitle').value.trim();
+                const author = document.getElementById('bookAuthor').value.trim();
+                const category = document.getElementById('bookCategory').value;
+                const language = document.getElementById('bookLanguage').value;
+                const description = document.getElementById('bookDescription').value.trim();
+                
+                if (!title) {
+                    alert('Please enter book title');
+                    return false;
+                }
+                
+                if (!author) {
+                    alert('Please enter author name');
+                    return false;
+                }
+                
+                if (!category) {
+                    alert('Please select category');
+                    return false;
+                }
+                
+                if (!language) {
+                    alert('Please select language');
+                    return false;
+                }
+                
+                if (!description) {
+                    alert('Please enter book description');
+                    return false;
+                }
+                
+                if (!selectedFile) {
+                    alert('Please select a book file to upload');
+                    return false;
+                }
+                
+                return true;
+            }
+            
+            function saveBookToLibrary() {
+                // Get form data
+                const bookData = {
+                    id: Date.now(),
+                    title: document.getElementById('bookTitle').value.trim(),
+                    author: document.getElementById('bookAuthor').value.trim(),
+                    description: document.getElementById('bookDescription').value.trim(),
+                    category: document.getElementById('bookCategory').value,
+                    language: document.getElementById('bookLanguage').value,
+                    year: document.getElementById('bookYear').value || new Date().getFullYear(),
+                    isbn: document.getElementById('bookISBN').value.trim(),
+                    pages: Math.floor(Math.random() * 500) + 100, // Random page count for demo
+                    popularity: 50,
+                    uploadedAt: new Date().toISOString(),
+                    fileName: selectedFile.name,
+                    fileSize: selectedFile.size,
+                    fileType: selectedFile.type
+                };
+                
+                // Get existing books from localStorage
+                let books = JSON.parse(localStorage.getItem('uploadedBooks') || '[]');
+                
+                // Add new book
+                books.push(bookData);
+                
+                // Save back to localStorage
+                localStorage.setItem('uploadedBooks', JSON.stringify(books));
+                
+                // Also update main books array if it exists
+                let allBooks = JSON.parse(localStorage.getItem('allBooks') || '[]');
+                allBooks.push(bookData);
+                localStorage.setItem('allBooks', JSON.stringify(allBooks));
+                
+                console.log('Book saved:', bookData);
+            }
+            
+            function resetForm() {
+                document.getElementById('bookUploadForm').reset();
+                removeFile();
+                document.getElementById('uploadProgress').style.display = 'none';
+                
+                const submitBtn = document.getElementById('submitBtn');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-upload"></i> Upload Book';
+            }
+            
+            // For admin access (in real implementation, this would check user role)
+            const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+            if (!currentUser || currentUser.role !== 'admin') {
+                // In demo, allow anyone to upload
+                // In production, redirect non-admins
+                // window.location.href = 'library.html';
+            }
+        });
+    </script>
+</body>
+</html>

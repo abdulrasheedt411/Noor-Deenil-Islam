@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Noor Deenil Islam</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Open+Sans:wght@300;400;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <style>
+        :root {
+            --islamic-blue: #0d3b66;
+            --islamic-gold: #d4af37;
+            --islamic-green: #0a5c36;
+            --islamic-teal: #2a9d8f;
+            --islamic-purple: #6a4c93;
+            --islamic-cream: #fef9f3;
+        }
+        
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(13, 59, 102, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 20%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* Navigation - Same as index.html */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(13, 59, 102, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--islamic-gold);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 12px;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-logo-icon {
+            position: relative;
+            width: 45px;
+            height: 45px;
+        }
+        
+        .nav-logo-circle {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--islamic-blue) 0%, var(--islamic-teal) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--islamic-gold);
+        }
+        
+        .nav-logo-circle::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.2) 50%, transparent 70%);
+            animation: shine 3s infinite linear;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .nav-logo-inner {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--islamic-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Amiri', serif;
+            font-size: 18px;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        .nav-logo-crescent {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 50%;
+            top: 8px;
+            left: 24px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            z-index: 2;
+        }
+        
+        .nav-logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+        
+        .nav-arabic-logo {
+            font-family: 'Amiri', serif;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--islamic-blue);
+            letter-spacing: 0;
+        }
+        
+        .nav-english-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--islamic-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Dashboard Styles */
+        .dashboard {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+        
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Sidebar */
+        .dashboard-sidebar {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            position: sticky;
+            top: 120px;
+            border: 1px solid #f1f1f1;
+        }
+        
+        .user-profile {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .user-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--islamic-blue) 0%, var(--islamic-teal) 100%);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 10px 20px rgba(13, 59, 102, 0.2);
+            border: 3px solid var(--islamic-gold);
+        }
+        
+        .user-name {
+            font-size: 1.3rem;
+            color: var(--islamic-blue);
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .user-email {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .user-role {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--islamic-gold) 0%, #ffd700 100%);
+            color: var(--islamic-blue);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+        }
+        
+        .sidebar-menu li {
+            margin-bottom: 8px;
+        }
+        
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            color: #555;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .sidebar-menu a:hover {
+            background: linear-gradient(135deg, rgba(13, 59, 102, 0.1) 0%, rgba(42, 157, 143, 0.1) 100%);
+            color: var(--islamic-blue);
+            transform: translateX(5px);
+        }
+        
+        .sidebar-menu a.active {
+            background: linear-gradient(135deg, var(--islamic-blue) 0%, var(--islamic-teal) 100%);
+            color: white;
+            box-shadow: 0 5px 15px rgba(13, 59, 102, 0.2);
+        }
+        
+        .sidebar-menu i {
+            width: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        /* Main Content */
+        .dashboard-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 1px solid #f1f1f1;
+        }
+        
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .dashboard-title {
+            color: var(--islamic-blue);
+            font-size: 2.2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        
+        .dashboard-subtitle {
+            color: #666;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+        
+        .logout-btn {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff4757 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        .logout-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+        }
+        
+        /* Stats Cards */
+        .stats-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, var(--islamic-blue) 0%, var(--islamic-teal) 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 10px 20px rgba(13, 59, 102, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(13, 59, 102, 0.3);
+        }
+        
+        .stat-card:nth-child(2) {
+            background: linear-gradient(135deg, var(--islamic-purple) 0%, #8a63b5 100%);
+        }
+        
+        .stat-card:nth-child(3) {
+            background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+        }
+        
+        .stat-card:nth-child(4) {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+        }
+        
+        .stat-icon {
+            font-size: 2.5rem;
+            opacity: 0.9;
+        }
+        
+        .stat-info h3 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .stat-info p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+        
+        /* Course Progress */
+        .progress-section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--islamic-blue);
+            margin-bottom: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--islamic-gold);
+        }
+        
+        .course-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--islamic-blue);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+        
+        .course-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .course-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .course-title {
+            font-weight: 600;
+            color: var(--islamic-blue);
+            font-size: 1.2rem;
+        }
+        
+        .progress-percentage {
+            background: var(--islamic-gold);
+            color: var(--islamic-blue);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--islamic-blue), var(--islamic-teal));
+            border-radius: 5px;
+            transition: width 0.5s ease;
+        }
+        
+        /* Recent Activity */
+        .activity-list {
+            list-style: none;
+        }
+        
+        .activity-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .activity-item:hover {
+            background: #f9f9f9;
+        }
+        
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--islamic-blue) 0%, var(--islamic-teal) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(13, 59, 102, 0.2);
+        }
+        
+        .activity-content {
+            flex: 1;
+        }
+        
+        .activity-text {
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .activity-time {
+            color: #666;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .action-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--islamic-blue);
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .action-card:hover {
+            border-color: var(--islamic-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+        }
+        
+        .action-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--islamic-blue) 0%, var(--islamic-teal) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .action-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        /* Admin Specific */
+        .admin-controls {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff4757 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .admin-controls h3 {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .admin-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .admin-btn {
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .admin-btn:hover {
+            background: white;
+            color: #ff6b6b;
+        }
+        
+        /* Navigation Menu Styles */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            position: relative;
+        }
+        
+        .nav-menu a {
+            color: var(--islamic-blue);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--islamic-gold);
+            background: rgba(13, 59, 102, 0.05);
+        }
+        
+        .nav-menu a.active {
+            color: var(--islamic-gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+        
+        .login-btn {
+            background: linear-gradient(135deg, var(--islamic-gold) 0%, #ffd700 100%);
+            color: var(--islamic-blue) !important;
+            padding: 12px 25px !important;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease !important;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+            background: linear-gradient(135deg, #ffd700 0%, var(--islamic-gold) 100%);
+        }
+        
+        /* Dropdown Menu Styles */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 250px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-radius: 15px;
+            padding: 15px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+            border: 1px solid #eee;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu li {
+            width: 100%;
+        }
+        
+        .dropdown-menu a {
+            padding: 12px 25px;
+            color: #555;
+            font-weight: 500;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-menu a:hover {
+            color: var(--islamic-blue);
+            background: rgba(13, 59, 102, 0.05);
+            padding-left: 35px;
+        }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--islamic-blue);
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 40px 20px;
+                transition: left 0.3s ease;
+                gap: 10px;
+                overflow-y: auto;
+            }
+            
+            .nav-menu.show {
+                left: 0;
+            }
+            
+            .nav-menu a {
+                padding: 20px;
+                border-radius: 10px;
+                justify-content: flex-start;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: #f8f9fa;
+                margin: 10px 0;
+                border-radius: 10px;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            .dropdown:hover .dropdown-menu,
+            .dropdown-menu.show {
+                max-height: 500px;
+            }
+            
+            .dropdown-menu a {
+                padding-left: 40px;
+            }
+            
+            .dashboard-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .dashboard-sidebar {
+                position: static;
+            }
+            
+            .stats-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .stats-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .quick-actions {
+                grid-template-columns: 1fr;
+            }
+            
+            .dashboard-content {
+                padding: 30px 20px;
+            }
+            
+            .dashboard-title {
+                font-size: 1.8rem;
+            }
+            
+            .admin-buttons {
+                flex-direction: column;
+            }
+            
+            .admin-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-logo-icon {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .nav-logo-circle {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .nav-logo-inner {
+                width: 25px;
+                height: 25px;
+                font-size: 14px;
+            }
+            
+            .nav-arabic-logo {
+                font-size: 0.9rem;
+            }
+            
+            .course-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .activity-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .stat-info h3 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Additional Utility Classes */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <div class="nav-logo-circle">
+                        <div class="nav-logo-inner">ن</div>
+                        <div class="nav-logo-crescent"></div>
+                    </div>
+                </div>
+                <div class="nav-logo-text">
+                    <span class="nav-arabic-logo">نور دين الإسلام</span>
+                    <span class="nav-english-logo">Noor Deenil Islam</span>
+                </div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="dashboard.html" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-book-open"></i> Classes <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="dawah.html">Dawah Classes</a></li>
+                        <li><a href="arabic.html">Arabic Classes</a></li>
+                        <li><a href="#quran-studies">Quran Studies</a></li>
+                        <li><a href="#hadith-studies">Hadith Studies</a></li>
+                        <li><a href="#fiqh-studies">Fiqh Studies</a></li>
+                    </ul>
+                </li>
+                <li><a href="issues-solutions.html"><i class="fas fa-globe-americas"></i> Global Issues & Solutions</a></li>
+                <li><a href="#evidence"><i class="fas fa-university"></i> Academic Evidence</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="login.html" class="login-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <section class="dashboard">
+        <div class="container dashboard-container">
+            <!-- Sidebar -->
+            <aside class="dashboard-sidebar">
+                <div class="user-profile">
+                    <div class="user-avatar" id="userAvatar">
+                        <!-- Initials will be inserted by JavaScript -->
+                    </div>
+                    <h3 class="user-name" id="userName">Loading...</h3>
+                    <p class="user-email" id="userEmail">Loading...</p>
+                    <div class="user-role" id="userRole">Student</div>
+                </div>
+
+                <ul class="sidebar-menu">
+                    <li><a href="dashboard.html" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="my-courses.html"><i class="fas fa-book-open"></i> My Courses</a></li>
+                    <li><a href="progress.html"><i class="fas fa-chart-line"></i> Progress</a></li>
+                    <li><a href="certificates.html"><i class="fas fa-certificate"></i> Certificates</a></li>
+                    <li><a href="assignments.html"><i class="fas fa-tasks"></i> Assignments</a></li>
+                    <li><a href="bookmarks.html"><i class="fas fa-bookmark"></i> Bookmarks</a></li>
+                    <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+                    <li><a href="profile.html"><i class="fas fa-user"></i> Profile Settings</a></li>
+                    <li><a href="support.html"><i class="fas fa-headset"></i> Support</a></li>
+                    
+                    <!-- Admin Only Links -->
+                    <li id="adminLinks" style="display: none;">
+                        <a href="admin-dashboard.html"><i class="fas fa-crown"></i> Admin Panel</a>
+                    </li>
+                    <li id="teacherLinks" style="display: none;">
+                        <a href="teacher-dashboard.html"><i class="fas fa-chalkboard-teacher"></i> Teacher Panel</a>
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="dashboard-content">
+                <div class="dashboard-header">
+                    <div>
+                        <h1 class="dashboard-title">Welcome Back, <span id="greetingName"></span>!</h1>
+                        <p class="dashboard-subtitle" id="dashboardSubtitle">Continue your journey of Islamic knowledge</p>
+                    </div>
+                    <button class="logout-btn" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+
+                <!-- Admin Controls (Visible only to Admin) -->
+                <div class="admin-controls" id="adminControls" style="display: none;">
+                    <h3><i class="fas fa-crown"></i> Administrator Controls</h3>
+                    <div class="admin-buttons">
+                        <button class="admin-btn" onclick="manageUsers()"><i class="fas fa-users"></i> Manage Users</button>
+                        <button class="admin-btn" onclick="manageCourses()"><i class="fas fa-book"></i> Manage Courses</button>
+                        <button class="admin-btn" onclick="viewAnalytics()"><i class="fas fa-chart-bar"></i> View Analytics</button>
+                        <button class="admin-btn" onclick="siteSettings()"><i class="fas fa-cog"></i> Site Settings</button>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <a href="my-courses.html" class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <h4>Continue Learning</h4>
+                        <p>Resume your last course</p>
+                    </a>
+                    
+                    <a href="library.html" class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h4>Digital Library</h4>
+                        <p>Access Islamic resources</p>
+                    </a>
+                    
+                    <a href="assignments.html" class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h4>Assignments</h4>
+                        <p>View pending tasks</p>
+                    </a>
+                    
+                    <a href="certificates.html" class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h4>Certificates</h4>
+                        <p>Download your certificates</p>
+                    </a>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="enrolledCourses">0</h3>
+                            <p>Enrolled Courses</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="completedLessons">0</h3>
+                            <p>Completed Lessons</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="studyHours">0</h3>
+                            <p>Study Hours</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="certificates">0</h3>
+                            <p>Certificates</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Progress -->
+                <div class="progress-section">
+                    <h2 class="section-title">Course Progress</h2>
+                    <div id="courseProgress">
+                        <!-- Courses will be loaded by JavaScript -->
+                        <p>Loading your courses...</p>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="progress-section">
+                    <h2 class="section-title">Recent Activity</h2>
+                    
+                    <ul class="activity-list" id="recentActivity">
+                        <li class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p class="activity-text">Welcome to Noor Deenil Islam Dashboard</p>
+                                <span class="activity-time"><i class="fas fa-clock"></i> Just now</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <!-- JavaScript -->
+    <script>
+        // Dashboard JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize dashboard
+            initializeDashboard();
+            
+            // Mobile menu toggle
+            document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+                const navMenu = document.getElementById('navMenu');
+                navMenu.classList.toggle('show');
+                this.innerHTML = navMenu.classList.contains('show') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Dropdown toggle for mobile
+            document.querySelectorAll('.dropdown > a').forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 1024) {
+                        e.preventDefault();
+                        const menu = this.nextElementSibling;
+                        menu.classList.toggle('show');
+                    }
+                });
+            });
+        });
+        
+        // Initialize dashboard function
+        function initializeDashboard() {
+            // Check if user is logged in
+            const currentUser = JSON.parse(localStorage.getItem('currentUser')) || 
+                              JSON.parse(sessionStorage.getItem('currentUser'));
+            
+            if (!currentUser) {
+                // Redirect to login if not logged in
+                showMessage('Please login to access the dashboard', 'error');
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 2000);
+                return;
+            }
+            
+            // Display user information
+            displayUserInfo(currentUser);
+            
+            // Load user progress data
+            loadUserProgress(currentUser);
+            
+            // Set up logout functionality
+            setupLogout();
+            
+            // Update navigation
+            updateNavigation(currentUser);
+            
+            // Load recent activity
+            loadRecentActivity(currentUser);
+            
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.dropdown') && !event.target.closest('.mobile-menu-btn')) {
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                }
+            });
+        }
+        
+        // Display user information
+        function displayUserInfo(user) {
+            // User name
+            document.getElementById('userName').textContent = user.name;
+            document.getElementById('greetingName').textContent = user.name.split(' ')[0];
+            
+            // User email
+            document.getElementById('userEmail').textContent = user.email;
+            
+            // User role
+            document.getElementById('userRole').textContent = user.role.charAt(0).toUpperCase() + user.role.slice(1);
+            
+            // Create avatar with initials
+            const initials = user.name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+            document.getElementById('userAvatar').textContent = initials;
+            
+            // Show/hide admin/teacher links based on role
+            if (user.role === 'admin') {
+                document.getElementById('adminLinks').style.display = 'block';
+                document.getElementById('adminControls').style.display = 'block';
+                document.getElementById('dashboardSubtitle').textContent = 'Manage the platform and oversee all activities';
+            } else if (user.role === 'teacher') {
+                document.getElementById('teacherLinks').style.display = 'block';
+                document.getElementById('dashboardSubtitle').textContent = 'Teach and guide students on their Islamic journey';
+            }
+        }
+        
+        // Load user progress data
+        function loadUserProgress(user) {
+            // Load user progress from localStorage or initialize
+            let userProgress = JSON.parse(localStorage.getItem(`userProgress_${user.id}`) || '{}');
+            
+            // Initialize if empty
+            if (!userProgress.initialized) {
+                userProgress = {
+                    initialized: true,
+                    enrolledCourses: 3,
+                    completedLessons: 12,
+                    studyHours: 24,
+                    certificates: 1,
+                    courses: {
+                        'dawah-training': {
+                            name: 'Dawah Training Program',
+                            progress: 75,
+                            lastModule: 'Answering Atheism - Module 4'
+                        },
+                        'quranic-arabic': {
+                            name: 'Quranic Arabic',
+                            progress: 40,
+                            lastModule: 'Grammar Rules - Module 2'
+                        },
+                        'islamic-philosophy': {
+                            name: 'Islamic Philosophy',
+                            progress: 90,
+                            lastModule: 'Final Assessment'
+                        }
+                    },
+                    lastUpdated: new Date().toISOString()
+                };
+                
+                localStorage.setItem(`userProgress_${user.id}`, JSON.stringify(userProgress));
+            }
+            
+            // Update stats
+            document.getElementById('enrolledCourses').textContent = userProgress.enrolledCourses || 0;
+            document.getElementById('completedLessons').textContent = userProgress.completedLessons || 0;
+            document.getElementById('studyHours').textContent = userProgress.studyHours || 0;
+            document.getElementById('certificates').textContent = userProgress.certificates || 0;
+            
+            // Update course progress
+            const courseProgressDiv = document.getElementById('courseProgress');
+            courseProgressDiv.innerHTML = '';
+            
+            if (userProgress.courses && Object.keys(userProgress.courses).length > 0) {
+                Object.values(userProgress.courses).forEach(course => {
+                    const courseCard = document.createElement('div');
+                    courseCard.className = 'course-card';
+                    courseCard.innerHTML = `
+                        <div class="course-header">
+                            <h4 class="course-title">${course.name}</h4>
+                            <span class="progress-percentage">${course.progress}%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${course.progress}%"></div>
+                        </div>
+                        <p>Continue from: ${course.lastModule}</p>
+                    `;
+                    courseProgressDiv.appendChild(courseCard);
+                });
+            } else {
+                courseProgressDiv.innerHTML = '<p>No courses enrolled yet. <a href="my-courses.html">Browse courses</a></p>';
+            }
+        }
+        
+        // Load recent activity
+        function loadRecentActivity(user) {
+            const activityList = document.getElementById('recentActivity');
+            
+            // Load activity from localStorage or initialize
+            let userActivity = JSON.parse(localStorage.getItem(`userActivity_${user.id}`) || '[]');
+            
+            // Add current login activity
+            const loginActivity = {
+                icon: 'fa-sign-in-alt',
+                text: `Logged into dashboard as ${user.role}`,
+                time: 'Just now'
+            };
+            
+            userActivity.unshift(loginActivity);
+            
+            // Keep only last 5 activities
+            userActivity = userActivity.slice(0, 5);
+            
+            // Save back to localStorage
+            localStorage.setItem(`userActivity_${user.id}`, JSON.stringify(userActivity));
+            
+            // Add some sample activities if empty
+            if (userActivity.length <= 1) {
+                const sampleActivities = [
+                    {
+                        icon: 'fa-book-open',
+                        text: 'Started "Dawah Training Program" course',
+                        time: '2 days ago'
+                    },
+                    {
+                        icon: 'fa-video',
+                        text: 'Watched "Evidence for Prophet Muhammad ﷺ" lecture',
+                        time: '3 days ago'
+                    },
+                    {
+                        icon: 'fa-file-alt',
+                        text: 'Completed quiz on "Comparative Religion"',
+                        time: '4 days ago'
+                    }
+                ];
+                
+                userActivity.push(...sampleActivities);
+                localStorage.setItem(`userActivity_${user.id}`, JSON.stringify(userActivity));
+            }
+            
+            // Display activities
+            activityList.innerHTML = '';
+            userActivity.forEach(activity => {
+                const activityItem = document.createElement('li');
+                activityItem.className = 'activity-item';
+                activityItem.innerHTML = `
+                    <div class="activity-icon">
+                        <i class="fas ${activity.icon}"></i>
+                    </div>
+                    <div class="activity-content">
+                        <p class="activity-text">${activity.text}</p>
+                        <span class="activity-time"><i class="fas fa-clock"></i> ${activity.time}</span>
+                    </div>
+                `;
+                activityList.appendChild(activityItem);
+            });
+        }
+        
+        // Setup logout functionality
+        function setupLogout() {
+            const logoutBtn = document.getElementById('logoutBtn');
+            const navLogoutBtn = document.querySelector('.nav-menu .login-btn');
+            
+            const logoutFunction = function() {
+                // Clear session
+                localStorage.removeItem('currentUser');
+                sessionStorage.removeItem('currentUser');
+                
+                // Redirect to login
+                window.location.href = 'login.html';
+            };
+            
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', logoutFunction);
+            }
+            
+            if (navLogoutBtn) {
+                navLogoutBtn.addEventListener('click', logoutFunction);
+            }
+        }
+        
+        // Update navigation
+        function updateNavigation(user) {
+            const navMenu = document.querySelector('.nav-menu');
+            const loginLink = navMenu.querySelector('a[href="login.html"]');
+            
+            if (loginLink) {
+                loginLink.innerHTML = '<i class="fas fa-sign-out-alt"></i> Logout';
+                loginLink.href = 'javascript:void(0)';
+                loginLink.classList.add('login-btn');
+                
+                // Remove existing click listeners
+                const newLoginLink = loginLink.cloneNode(true);
+                loginLink.parentNode.replaceChild(newLoginLink, loginLink);
+                
+                // Add new click listener
+                newLoginLink.addEventListener('click', function() {
+                    localStorage.removeItem('currentUser');
+                    sessionStorage.removeItem('currentUser');
+                    window.location.href = 'login.html';
+                });
+            }
+        }
+        
+        // Admin functions
+        function manageUsers() {
+            showMessage('User management panel would open here', 'info');
+        }
+        
+        function manageCourses() {
+            showMessage('Course management panel would open here', 'info');
+        }
+        
+        function viewAnalytics() {
+            showMessage('Analytics dashboard would open here', 'info');
+        }
+        
+        function siteSettings() {
+            showMessage('Site settings panel would open here', 'info');
+        }
+        
+        // Utility function to show messages
+        function showMessage(message, type = 'info') {
+            // Create message element
+            const messageDiv = document.createElement('div');
+            messageDiv.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: ${type === 'error' ? '#ff6b6b' : type === 'success' ? '#2ecc71' : '#3498db'};
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+                max-width: 400px;
+            `;
+            messageDiv.textContent = message;
+            
+            document.body.appendChild(messageDiv);
+            
+            setTimeout(() => {
+                messageDiv.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => messageDiv.remove(), 300);
+            }, 3000);
+        }
+        
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

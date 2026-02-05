@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dawah Classes - Noor Deenil Islam</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Open+Sans:wght@300;400;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --islamic-blue: #0d3b66;
+            --islamic-gold: #d4af37;
+            --islamic-green: #0a5c36;
+            --islamic-teal: #2a9d8f;
+            --islamic-purple: #6a4c93;
+            --islamic-cream: #fef9f3;
+            --african-brown: #8B4513;
+            --african-red: #B22222;
+            --african-yellow: #FFD700;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #333;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(13, 59, 102, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 20%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* Enhanced Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(13, 59, 102, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--islamic-gold);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 12px;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-logo-icon {
+            position: relative;
+            width: 45px;
+            height: 45px;
+        }
+        
+        .nav-logo-circle {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--islamic-blue) 0%, var(--islamic-teal) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--islamic-gold);
+        }
+        
+        .nav-logo-circle::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.2) 50%, transparent 70%);
+            animation: shine 3s infinite linear;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .nav-logo-inner {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--islamic-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Amiri', serif;
+            font-size: 18px;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        .nav-logo-crescent {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 50%;
+            top: 8px;
+            left: 24px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            z-index: 2;
+        }
+        
+        .nav-logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+        
+        .nav-arabic-logo {
+            font-family: 'Amiri', serif;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--islamic-blue);
+            letter-spacing: 0;
+        }
+        
+        .nav-english-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--islamic-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Dawah Hero Section - Stunning Design */
+        .dawah-hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 140px 20px 80px;
+            background: linear-gradient(135deg, #1a472a 0%, #2c5f2d 30%, #0d3b66 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dawah-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        }
+        
+        .dawah-hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Arabic Calligraphy Animation */
+        .dawah-calligraphy {
+            font-family: 'Amiri', serif;
+            font-size: 4.5rem;
+            color: white;
+            margin-bottom: 25px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: arabicFloat 8s ease-in-out infinite;
+            line-height: 1.2;
+        }
+        
+        @keyframes arabicFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+                text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            }
+            50% { 
+                transform: translateY(-20px) rotate(2deg); 
+                text-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            }
+        }
+        
+        .dawah-title {
+            font-family: 'Amiri', serif;
+            font-size: 3.2rem;
+            background: linear-gradient(135deg, #ffffff 0%, var(--islamic-gold) 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+            animation: titleGlow 4s ease-in-out infinite alternate;
+        }
+        
+        @keyframes titleGlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        .dawah-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .dawah-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Hero Stats */
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            min-width: 180px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--islamic-gold);
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .stat-label {
+            color: white;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Buttons */
+        .btn {
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--islamic-gold) 0%, #ffd700 100%);
+            color: var(--islamic-blue);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--islamic-gold);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        /* Dawah Curriculum */
+        .dawah-curriculum {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-family: 'Amiri', serif;
+            font-size: 2.8rem;
+            color: var(--islamic-blue);
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--islamic-gold), var(--islamic-teal));
+        }
+        
+        .curriculum-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .curriculum-card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .curriculum-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--islamic-blue), var(--islamic-teal), var(--islamic-gold));
+        }
+        
+        .curriculum-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(13, 59, 102, 0.15);
+            border-color: var(--islamic-gold);
+        }
+        
+        .curriculum-icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            color: white;
+            font-size: 36px;
+            box-shadow: 0 15px 25px rgba(13, 59, 102, 0.2);
+        }
+        
+        .christian-icon { background: linear-gradient(135deg, #0057b8, #ffd700); }
+        .jewish-icon { background: linear-gradient(135deg, #0038b8, #d4af37); }
+        .atheist-icon { background: linear-gradient(135deg, #333333, #666666); }
+        .african-icon { background: linear-gradient(135deg, var(--african-brown), var(--african-yellow), var(--african-red)); }
+        
+        .curriculum-card h3 {
+            color: var(--islamic-blue);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            font-family: 'Amiri', serif;
+        }
+        
+        .curriculum-card ul {
+            list-style: none;
+            text-align: left;
+        }
+        
+        .curriculum-card li {
+            padding: 12px 0;
+            color: #555;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .curriculum-card li:hover {
+            color: var(--islamic-blue);
+            transform: translateX(10px);
+        }
+        
+        .curriculum-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--islamic-gold);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Teaching Methods */
+        .teaching-methods {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+        
+        .methods-tabs {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(13, 59, 102, 0.1);
+        }
+        
+        .tab-headers {
+            display: flex;
+            background: linear-gradient(135deg, var(--islamic-blue) 0%, var(--islamic-teal) 100%);
+            overflow-x: auto;
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: 25px 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 200px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 4px;
+            background: var(--islamic-gold);
+            transition: width 0.3s ease;
+        }
+        
+        .tab-btn.active::after {
+            width: 80%;
+        }
+        
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .tab-content {
+            padding: 50px;
+        }
+        
+        .tab-pane {
+            display: none;
+        }
+        
+        .tab-pane.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .tab-pane h3 {
+            color: var(--islamic-blue);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid var(--islamic-gold);
+            padding-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .methods-list {
+            list-style: none;
+        }
+        
+        .methods-list li {
+            background: #f8f9fa;
+            margin-bottom: 20px;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid var(--islamic-gold);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .methods-list li:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .methods-list strong {
+            color: var(--islamic-blue);
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .quran-reference {
+            display: block;
+            color: var(--islamic-teal);
+            font-style: italic;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+        
+        /* African Traditional Religion Special Section */
+        .african-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+        
+        .african-card {
+            background: linear-gradient(135deg, #fef9f3 0%, #fff5e6 100%);
+            border-radius: 30px;
+            padding: 60px;
+            margin-bottom: 40px;
+            border: 3px solid var(--african-brown);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(139, 69, 19, 0.1);
+        }
+        
+        .african-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(178, 34, 34, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+        }
+        
+        .african-header {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .african-icon-large {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--african-brown), var(--african-yellow), var(--african-red));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 36px;
+            box-shadow: 0 10px 20px rgba(139, 69, 19, 0.3);
+        }
+        
+        .african-title {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            color: var(--african-brown);
+            margin: 0;
+        }
+        
+        .african-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .african-topic {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .african-topic:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(139, 69, 19, 0.15);
+            border-color: var(--african-yellow);
+        }
+        
+        .topic-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--african-brown), var(--african-red));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .african-topic h4 {
+            color: var(--african-brown);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .african-topic p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--islamic-blue) 0%, #1a5f8b 100%);
+            border-radius: 30px;
+            padding: 80px 40px;
+            text-align: center;
+            margin: 80px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-title {
+            font-family: 'Amiri', serif;
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .cta-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--islamic-blue) 0%, #0a2d4d 100%);
+            color: white;
+            padding: 80px 20px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(42, 157, 143, 0.1) 0%, transparent 50%);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer-col h3 {
+            color: var(--islamic-gold);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            font-family: 'Amiri', serif;
+        }
+        
+        .footer-col h4 {
+            color: var(--islamic-gold);
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--islamic-gold);
+        }
+        
+        .footer-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+        
+        .social-links a:hover {
+            background: var(--islamic-gold);
+            transform: translateY(-5px);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .footer-col a:hover {
+            color: var(--islamic-gold);
+            transform: translateX(5px);
+        }
+        
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .contact-info i {
+            color: var(--islamic-gold);
+            width: 25px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 10px;
+        }
+        
+        /* Navigation Menu */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            list-style: none;
+        }
+        
+        .nav-menu a {
+            color: var(--islamic-blue);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--islamic-gold);
+            background: rgba(13, 59, 102, 0.05);
+        }
+        
+        .nav-menu a.active {
+            color: var(--islamic-gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--islamic-blue);
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 40px 20px;
+                transition: left 0.3s ease;
+                gap: 10px;
+                overflow-y: auto;
+            }
+            
+            .nav-menu.show {
+                left: 0;
+            }
+            
+            .dawah-calligraphy {
+                font-size: 3rem;
+            }
+            
+            .dawah-title {
+                font-size: 2.2rem;
+            }
+            
+            .tab-headers {
+                flex-direction: column;
+            }
+            
+            .tab-btn {
+                min-width: auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .dawah-calligraphy {
+                font-size: 2.5rem;
+            }
+            
+            .dawah-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-stats {
+                gap: 20px;
+            }
+            
+            .stat-item {
+                min-width: 140px;
+                padding: 20px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .african-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .african-card {
+                padding: 30px 20px;
+            }
+            
+            .cta-section {
+                padding: 50px 20px;
+            }
+            
+            .cta-title {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <div class="nav-logo-circle">
+                        <div class="nav-logo-inner">ن</div>
+                        <div class="nav-logo-crescent"></div>
+                    </div>
+                </div>
+                <div class="nav-logo-text">
+                    <span class="nav-arabic-logo">نور دين الإسلام</span>
+                    <span class="nav-english-logo">Dawah Training</span>
+                </div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="library.html"><i class="fas fa-book"></i> Digital Library</a></li>
+                <li class="dropdown">
+                    <a href="#" class="active"><i class="fas fa-book-open"></i> Classes <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="dawah.html" class="active">Dawah Classes</a></li>
+                        <li><a href="arabic.html">Arabic Classes</a></li>
+                        <li><a href="quran-studies.html">Quran Studies</a></li>
+                        <li><a href="hadith-studies.html">Hadith Studies</a></li>
+                        <li><a href="fiqh-studies.html">Fiqh Studies</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-database"></i> Resources <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="quran-database.html"><i class="fas fa-book-quran"></i> Quran Database</a></li>
+                        <li><a href="hadith-collections.html"><i class="fas fa-book"></i> Hadith Collections</a></li>
+                        <li><a href="biblical-studies.html"><i class="fas fa-bible"></i> Biblical Studies</a></li>
+                        <li><a href="academic-research.html"><i class="fas fa-graduation-cap"></i> Academic Research</a></li>
+                        <li><a href="comparative-religion.html"><i class="fas fa-balance-scale"></i> Comparative Religion</a></li>
+                    </ul>
+                </li>
+                <li><a href="issues-solutions.html"><i class="fas fa-globe-americas"></i> Global Issues</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="login.html" class="btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dawah Hero Section -->
+    <section class="dawah-hero">
+        <div class="dawah-hero-container">
+            <div class="dawah-calligraphy">دعوة إلى الله</div>
+            <h1 class="dawah-title">Dawah Training Program</h1>
+            <p class="dawah-subtitle">LEARN TO SHARE ISLAM WITH WISDOM & EVIDENCE</p>
+            <p class="dawah-description">
+                Comprehensive training program for effective Islamic propagation using Quranic guidance, 
+                scientific evidence, philosophical reasoning, and interfaith dialogue techniques. 
+                Master the art of sharing Islam with wisdom, compassion, and intellectual rigor.
+            </p>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">5000+</span>
+                    <span class="stat-label">Students Trained</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">40+</span>
+                    <span class="stat-label">Countries Reached</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">Satisfaction Rate</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Expert Support</span>
+                </div>
+            </div>
+            
+            <div class="hero-buttons">
+                <a href="#enroll" class="btn btn-primary">
+                    <i class="fas fa-graduation-cap"></i> Enroll Now
+                </a>
+                <a href="#curriculum" class="btn btn-secondary">
+                    <i class="fas fa-book-open"></i> View Curriculum
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dawah Curriculum -->
+    <section class="dawah-curriculum" id="curriculum">
+        <h2 class="section-title">Dawah Training Curriculum</h2>
+        
+        <div class="curriculum-grid">
+            <div class="curriculum-card">
+                <div class="curriculum-icon christian-icon">
+                    <i class="fas fa-cross"></i>
+                </div>
+                <h3>Christianity & Islam</h3>
+                <ul>
+                    <li>Biblical Prophecies of Muhammad ﷺ</li>
+                    <li>Trinity vs Tawhid Analysis</li>
+                    <li>Historical Jesus vs Islamic Isa (AS)</li>
+                    <li>Textual Criticism of Bible</li>
+                    <li>Common Ground & Differences</li>
+                    <li>Dialogue with Christians</li>
+                </ul>
+            </div>
+            
+            <div class="curriculum-card">
+                <div class="curriculum-icon jewish-icon">
+                    <i class="fas fa-star-of-david"></i>
+                </div>
+                <h3>Judaism & Islam</h3>
+                <ul>
+                    <li>Torah Prophecies of Islam</li>
+                    <li>Concept of God in Judaism</li>
+                    <li>Prophethood in Jewish Tradition</li>
+                    <li>Qumran Scrolls Evidence</li>
+                    <li>Jewish-Muslim Dialogue</li>
+                    <li>Shared Abrahamic Heritage</li>
+                </ul>
+            </div>
+            
+            <div class="curriculum-card">
+                <div class="curriculum-icon atheist-icon">
+                    <i class="fas fa-atheism"></i>
+                </div>
+                <h3>Atheism & Science</h3>
+                <ul>
+                    <li>Cosmological Arguments for God</li>
+                    <li>Teleological Arguments from Design</li>
+                    <li>Moral Arguments for Divine Law</li>
+                    <li>Scientific Miracles of Quran</li>
+                    <li>Answering Common Objections</li>
+                    <li>Philosophy of Science & Religion</li>
+                </ul>
+            </div>
+            
+            <div class="curriculum-card">
+                <div class="curriculum-icon african-icon">
+                    <i class="fas fa-globe-africa"></i>
+                </div>
+                <h3>African Traditions</h3>
+                <ul>
+                    <li>Traditional African Religions</li>
+                    <li>Ancestral Worship Analysis</li>
+                    <li>Common Spiritual Concepts</li>
+                    <li>Cultural Sensitivity in Dawah</li>
+                    <li>Islamic Solutions to Tribal Issues</li>
+                    <li>African Prophetic Traditions</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- African Traditional Religion Special Section -->
+    <section class="african-section">
+        <div class="african-card">
+            <div class="african-header">
+                <div class="african-icon-large">
+                    <i class="fas fa-globe-africa"></i>
+                </div>
+                <h2 class="african-title">African Traditional Religion (ATR)</h2>
+            </div>
+            
+            <p style="color: #666; font-size: 1.1rem; line-height: 1.6; margin-bottom: 30px;">
+                <strong>Special Focus:</strong> Africa has over 100 million followers of Traditional Religions. 
+                Understanding ATR is crucial for effective dawah in Africa. This module provides deep insights 
+                into African spirituality and shows how Islam fulfills and elevates traditional African values.
+            </p>
+            
+            <div class="african-grid">
+                <div class="african-topic">
+                    <div class="topic-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Ancestral Veneration</h4>
+                    <p>Understanding the role of ancestors in ATR and how Islamic concept of righteous predecessors provides a balanced alternative without shirk.</p>
+                </div>
+                
+                <div class="african-topic">
+                    <div class="topic-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h4>Nature Spirits & Deities</h4>
+                    <p>Analysis of nature worship in ATR and Islamic monotheistic perspective that honors creation while worshipping only the Creator.</p>
+                </div>
+                
+                <div class="african-topic">
+                    <div class="topic-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h4>Divination & Magic</h4>
+                    <p>Understanding traditional healing practices, divination systems, and Islamic guidance on permissible and impermissible practices.</p>
+                </div>
+                
+                <div class="african-topic">
+                    <div class="topic-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h4>Community & Justice</h4>
+                    <p>How Islamic social justice systems align with traditional African values of community, fairness, and collective responsibility.</p>
+                </div>
+                
+                <div class="african-topic">
+                    <div class="topic-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h4>Oral Traditions</h4>
+                    <p>Respecting African oral histories while introducing the preserved written revelation of Quran as the ultimate guidance.</p>
+                </div>
+                
+                <div class="african-topic">
+                    <div class="topic-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h4>Cultural Preservation</h4>
+                    <p>How Islam preserves positive African cultural practices while reforming those contradictory to Tawhid and Islamic ethics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaching Methods -->
+    <section class="teaching-methods">
+        <h2 class="section-title">Teaching Methodology</h2>
+        
+        <div class="methods-tabs">
+            <div class="tab-headers">
+                <button class="tab-btn active" data-tab="quranic">
+                    <i class="fas fa-book-quran"></i> Quranic Approach
+                </button>
+                <button class="tab-btn" data-tab="socratic">
+                    <i class="fas fa-question-circle"></i> Socratic Method
+                </button>
+                <button class="tab-btn" data-tab="historical">
+                    <i class="fas fa-history"></i> Historical Evidence
+                </button>
+                <button class="tab-btn" data-tab="philosophical">
+                    <i class="fas fa-brain"></i> Philosophical Reasoning
+                </button>
+            </div>
+            
+            <div class="tab-content">
+                <div class="tab-pane active" id="quranic">
+                    <h3>Quranic Method of Dialogue</h3>
+                    <ul class="methods-list">
+                        <li>
+                            <strong>Surah An-Nahl 16:125:</strong> "Invite to the way of your Lord with wisdom and good instruction, and argue with them in a way that is best..."
+                            <span class="quran-reference">The Foundation of Islamic Propagation</span>
+                        </li>
+                        <li>
+                            <strong>Surah Al-Ankabut 29:46:</strong> "And do not argue with the People of the Scripture except in a way that is best..."
+                            <span class="quran-reference">Guidance for Interfaith Dialogue</span>
+                        </li>
+                        <li>
+                            <strong>Surah Al-Baqarah 2:256:</strong> "There shall be no compulsion in [acceptance of] the religion..."
+                            <span class="quran-reference">Principle of Religious Freedom</span>
+                        </li>
+                        <li>
+                            <strong>Surah Al-Imran 3:64:</strong> "Say, 'O People of the Scripture, come to a word that is equitable between us and you...'"
+                            <span class="quran-reference">Common Ground Approach</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="tab-pane" id="socratic">
+                    <h3>Socratic Questioning Method</h3>
+                    <ul class="methods-list">
+                        <li>Asking probing questions to reveal contradictions in beliefs</li>
+                        <li>Leading to logical conclusions through guided dialogue</li>
+                        <li>Building arguments from common philosophical ground</li>
+                        <li>Using analogies and thought experiments effectively</li>
+                        <li>Developing critical thinking skills in dialogue partners</li>
+                        <li>Creating "Aha!" moments through self-discovery</li>
+                    </ul>
+                </div>
+                
+                <div class="tab-pane" id="historical">
+                    <h3>Historical Evidence Method</h3>
+                    <ul class="methods-list">
+                        <li>Archaeological evidence for Islamic historical claims</li>
+                        <li>Manuscript evidence for Quranic preservation</li>
+                        <li>Non-Muslim historical accounts of early Islam</li>
+                        <li>Textual criticism of religious scriptures</li>
+                        <li>Historical development of religious doctrines</li>
+                        <li>Biographical evidence for Prophet Muhammad's ﷺ character</li>
+                    </ul>
+                </div>
+                
+                <div class="tab-pane" id="philosophical">
+                    <h3>Philosophical Reasoning</h3>
+                    <ul class="methods-list">
+                        <li>Kalam Cosmological Argument for First Cause</li>
+                        <li>Moral Argument for Divine Law and Accountability</li>
+                        <li>Teleological Argument from Fine-Tuning of Universe</li>
+                        <li>Ontological Argument for Necessary Being</li>
+                        <li>Argument from Consciousness and Rationality</li>
+                        <li>Epistemological foundations of religious knowledge</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="enroll">
+        <div class="cta-content">
+            <h2 class="cta-title">Start Your Dawah Journey Today</h2>
+            <p class="cta-subtitle">
+                Join thousands who have mastered the art of sharing Islam with wisdom and evidence. 
+                Transform your ability to communicate Islamic truths effectively across cultures and belief systems.
+            </p>
+            <div class="hero-buttons">
+                <a href="#enroll-form" class="btn btn-primary" style="font-size: 1.1rem; padding: 20px 50px;">
+                    <i class="fas fa-user-plus"></i> Enroll Now - Free Trial
+                </a>
+                <a href="#schedule" class="btn btn-secondary" style="font-size: 1.1rem; padding: 20px 50px;">
+                    <i class="fas fa-calendar-alt"></i> View Class Schedule
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Noor Deenil Islam</h3>
+                    <p class="footer-description">
+                        Spreading the light of divine guidance through knowledge, wisdom, 
+                        and evidence-based understanding. Training effective dawah workers worldwide.
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Dawah Training</h4>
+                    <ul>
+                        <li><a href="#christianity">Christianity & Islam</a></li>
+                        <li><a href="#judaism">Judaism & Islam</a></li>
+                        <li><a href="#atheism">Atheism & Science</a></li>
+                        <li><a href="#african">African Traditions</a></li>
+                        <li><a href="#certification">Certification</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="quran-database.html">Quran Database</a></li>
+                        <li><a href="biblical-studies.html">Biblical Studies</a></li>
+                        <li><a href="academic-research.html">Academic Research</a></li>
+                        <li><a href="library.html">Digital Library</a></li>
+                        <li><a href="comparative-religion.html">Comparative Religion</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> dawah@noordeenilislam.com</p>
+                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Global Online Platform</p>
+                        <p><i class="fas fa-clock"></i> Support: 24/7 Available</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Noor Deenil Islam. All rights reserved.</p>
+                <p>"Invite to the way of your Lord with wisdom and good instruction" - Quran 16:125</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('show');
+            this.innerHTML = navMenu.classList.contains('show') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Tab functionality
+        document.querySelectorAll('.tab-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // Remove active class from all buttons and panes
+                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding pane
+                this.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Dropdown functionality
+        document.querySelectorAll('.dropdown > a').forEach(dropdown => {
+            dropdown.addEventListener('click', function(e) {
+                if (window.innerWidth <= 1024) {
+                    e.preventDefault();
+                    const menu = this.nextElementSibling;
+                    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+                }
+            });
+        });
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.dropdown') && !event.target.closest('.mobile-menu-btn')) {
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.style.display = 'none';
+                });
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (window.innerWidth <= 1024) {
+                        document.getElementById('navMenu').classList.remove('show');
+                        document.getElementById('mobileMenuBtn').innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+        });
+        
+        // Enrollment button functionality
+        document.querySelectorAll('.btn-primary[href="#enroll"], .btn-primary[href="#enroll-form"]').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#enroll' || this.getAttribute('href') === '#enroll-form') {
+                    e.preventDefault();
+                    
+                    // Create enrollment modal
+                    const modal = document.createElement('div');
+                    modal.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.8);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 10000;
+                        padding: 20px;
+                    `;
+                    
+                    modal.innerHTML = `
+                        <div style="background: white; border-radius: 25px; padding: 40px; max-width: 500px; width: 100%; border: 3px solid var(--islamic-gold); position: relative;">
+                            <button style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; color: #666; cursor: pointer;">×</button>
+                            <h2 style="font-family: 'Amiri', serif; color: var(--islamic-blue); margin-bottom: 20px; text-align: center;">Enroll in Dawah Training</h2>
+                            <p style="color: #666; margin-bottom: 30px; text-align: center;">Begin your journey to share Islam with wisdom and evidence</p>
+                            
+                            <form id="enrollmentForm" style="display: flex; flex-direction: column; gap: 20px;">
+                                <input type="text" placeholder="Full Name" required style="padding: 15px; border: 2px solid #e9ecef; border-radius: 10px; font-size: 1rem;">
+                                <input type="email" placeholder="Email Address" required style="padding: 15px; border: 2px solid #e9ecef; border-radius: 10px; font-size: 1rem;">
+                                <select required style="padding: 15px; border: 2px solid #e9ecef; border-radius: 10px; font-size: 1rem;">
+                                    <option value="">Select Focus Area</option>
+                                    <option value="christianity">Christianity & Islam</option>
+                                    <option value="judaism">Judaism & Islam</option>
+                                    <option value="atheism">Atheism & Science</option>
+                                    <option value="african">African Traditions</option>
+                                    <option value="all">All Modules</option>
+                                </select>
+                                <button type="submit" style="background: linear-gradient(135deg, var(--islamic-gold) 0%, #ffd700 100%); color: var(--islamic-blue); padding: 15px; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 1.1rem;">
+                                    Start Free Trial
+                                </button>
+                            </form>
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(modal);
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Close modal
+                    modal.querySelector('button').addEventListener('click', () => {
+                        document.body.removeChild(modal);
+                        document.body.style.overflow = 'auto';
+                    });
+                    
+                    // Form submission
+                    modal.querySelector('form').addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        alert('Enrollment successful! Check your email for access to free trial materials.');
+                        document.body.removeChild(modal);
+                        document.body.style.overflow = 'auto';
+                    });
+                    
+                    // Close on outside click
+                    modal.addEventListener('click', (e) => {
+                        if (e.target === modal) {
+                            document.body.removeChild(modal);
+                            document.body.style.overflow = 'auto';
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Animation on scroll
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.curriculum-card, .african-topic, .methods-list li');
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (cardTop < windowHeight - 100) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        
+        // Initialize card animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.curriculum-card, .african-topic, .methods-list li');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // Trigger animation
+            setTimeout(() => {
+                window.dispatchEvent(new Event('scroll'));
+            }, 100);
+            
+            // Highlight African section
+            const africanCard = document.querySelector('.african-card');
+            if (africanCard) {
+                setTimeout(() => {
+                    africanCard.style.boxShadow = '0 25px 50px rgba(139, 69, 19, 0.2)';
+                    africanCard.style.transform = 'translateY(-10px)';
+                    setTimeout(() => {
+                        africanCard.style.boxShadow = '0 20px 40px rgba(139, 69, 19, 0.1)';
+                        africanCard.style.transform = 'translateY(0)';
+                    }, 1000);
+                }, 1500);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<nav class="navbar">
+    <div class="container nav-container">
+        <a href="../index.html" class="logo">
+            <span class="arabic-logo">نور دين الإسلام</span>
+            <span class="english-logo">Noor Deenil Islam</span>
+        </a>
+        
+        <!-- Islamic Date & Prayer Times -->
+        <div class="islamic-info" style="
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            margin-right: 2rem;
+        ">
+            <div id="islamic-date" style="
+                font-family: var(--arabic-font);
+                font-size: 1.1rem;
+                color: var(--secondary-color);
+                margin-bottom: 5px;
+            "></div>
+            <div id="prayer-times" style="
+                display: flex;
+                gap: 10px;
+                font-size: 0.8rem;
+            "></div>
+        </div>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li class="dropdown">
+                <a href="#"><i class="fas fa-book-open"></i> Classes <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="../pages/dawah.html">Dawah Classes</a></li>
+                    <li><a href="../pages/arabic.html">Arabic Classes</a></li>
+                    <li><a href="#quran-studies">Quran Studies</a></li>
+                    <li><a href="#hadith-studies">Hadith Studies</a></li>
+                    <li><a href="#fiqh-studies">Fiqh Studies</a></li>
+                </ul>
+            </li>
+            <li><a href="../pages/issues-solutions.html"><i class="fas fa-globe-americas"></i> Global Issues & Solutions</a></li>
+            <li><a href="#evidence"><i class="fas fa-university"></i> Academic Evidence</a></li>
+            <li class="dropdown">
+                <a href="#"><i class="fas fa-book"></i> Resources <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="../pages/resources.html">Comparative Religion</a></li>
+                    <li><a href="#philosophy">Philosophy & Psychology</a></li>
+                    <li><a href="#science">Science & Islam</a></li>
+                    <li><a href="#history">Historical Evidence</a></li>
+                </ul>
+            </li>
+            <li><a href="../pages/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="#login" class="login-btn"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+        </ul>
+    </div>
+</nav>
