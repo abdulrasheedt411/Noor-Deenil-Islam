@@ -6,7 +6,6 @@
     <title>Contact Us - Noor Deenil Islam</title>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Open+Sans:wght@300;400;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
     <style>
         :root {
             --islamic-blue: #0d3b66;
@@ -46,7 +45,7 @@
             z-index: -1;
         }
         
-        /* Navigation - Same as index.html */
+        /* Navigation */
         .navbar {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -162,7 +161,7 @@
             letter-spacing: 1px;
         }
         
-        /* Contact Hero Section - Matching Index */
+        /* Contact Hero Section */
         .hero-contact {
             min-height: 80vh;
             display: flex;
@@ -589,7 +588,7 @@
             line-height: 1.8;
         }
         
-        /* Footer - Same as index.html */
+        /* Footer */
         .footer {
             background: linear-gradient(135deg, var(--islamic-blue) 0%, #0a2d4d 100%);
             color: white;
@@ -991,10 +990,10 @@
 </head>
 <body>
 
-    <!-- Navigation -->
+    <!-- Navigation - FIXED LINKS -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="../index.html" class="nav-logo">
+            <a href="index.html" class="nav-logo">
                 <div class="nav-logo-icon">
                     <div class="nav-logo-circle">
                         <div class="nav-logo-inner">ن</div>
@@ -1012,23 +1011,17 @@
             </button>
             
             <ul class="nav-menu" id="navMenu">
-                <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="library.html"><i class="fas fa-book"></i> Digital Library</a></li>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="arabic.html"><i class="fas fa-language"></i> Arabic</a></li>
                 <li class="dropdown">
                     <a href="#"><i class="fas fa-database"></i> Resources <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a href="library.html"><i class="fas fa-book"></i> Digital Library</a></li>
-                        <li><a href="quran-database.html"><i class="fas fa-book-quran"></i> Quran Database</a></li>
-                        <li><a href="hadith-collections.html"><i class="fas fa-book"></i> Hadith Collections</a></li>
-                        <li><a href="biblical-studies.html"><i class="fas fa-bible"></i> Biblical Studies</a></li>
-                        <li><a href="academic-research.html"><i class="fas fa-graduation-cap"></i> Academic Research</a></li>
-                        <li><a href="comparative-religion.html"><i class="fas fa-balance-scale"></i> Comparative Religion</a></li>
-                        <li><a href="philosophy-psychology.html"><i class="fas fa-brain"></i> Philosophy & Psychology</a></li>
-                        <li><a href="science-islam.html"><i class="fas fa-atom"></i> Science & Islam</a></li>
-                        <li><a href="historical-evidence.html"><i class="fas fa-history"></i> Historical Evidence</a></li>
+                        <li><a href="arabic.html"><i class="fas fa-language"></i> Arabic Classes</a></li>
+                        <li><a href="dawah.html"><i class="fas fa-microphone"></i> Dawah Training</a></li>
+                        <li><a href="issues-solutions.html"><i class="fas fa-globe"></i> Global Issues</a></li>
                     </ul>
                 </li>
-                <li><a href="issues-solutions.html"><i class="fas fa-globe-americas"></i> Global Issues & Solutions</a></li>
+                <li><a href="issues-solutions.html"><i class="fas fa-globe-americas"></i> Global Issues</a></li>
                 <li><a href="#evidence"><i class="fas fa-university"></i> Academic Evidence</a></li>
                 <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact</a></li>
                 <li><a href="login.html" class="login-btn"><i class="fas fa-sign-in-alt"></i> Login</a></li>
@@ -1167,7 +1160,7 @@
             <h2 class="section-title">Frequently Asked Questions</h2>
             
             <div class="faq-container">
-                <div class="faq-item active">
+                <div class="faq-item">
                     <div class="faq-question">
                         <span>Is this website only for Muslims?</span>
                         <i class="fas fa-chevron-down"></i>
@@ -1230,7 +1223,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer - FIXED LINKS -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -1251,22 +1244,11 @@
                 <div class="footer-col">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="../index.html">Home</a></li>
-                        <li><a href="library.html">Digital Library</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="arabic.html">Arabic Classes</a></li>
+                        <li><a href="dawah.html">Dawah Training</a></li>
                         <li><a href="issues-solutions.html">Global Issues</a></li>
-                        <li><a href="#evidence">Academic Evidence</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="quran-database.html">Quran Database</a></li>
-                        <li><a href="hadith-collections.html">Hadith Collections</a></li>
-                        <li><a href="biblical-studies.html">Biblical Studies</a></li>
-                        <li><a href="academic-research.html">Academic Research</a></li>
-                        <li><a href="science-islam.html">Science & Islam</a></li>
                     </ul>
                 </div>
                 
@@ -1317,13 +1299,13 @@
                 
                 // Close all other FAQ items
                 document.querySelectorAll('.faq-item').forEach(otherItem => {
-                    otherItem.classList.remove('active');
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
                 });
                 
                 // Toggle current item
-                if (!isActive) {
-                    item.classList.add('active');
-                }
+                item.classList.toggle('active');
             });
         });
         
@@ -1381,32 +1363,6 @@
             
             // In a real application, you would send this data to a server
             console.log('Form submitted:', formData);
-            
-            // Example using fetch API:
-            /*
-            fetch('/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Show success message
-                successMessage.classList.add('show');
-                
-                // Reset form after 5 seconds
-                setTimeout(() => {
-                    document.getElementById('contactForm').reset();
-                    successMessage.classList.remove('show');
-                }, 5000);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('There was an error sending your message. Please try again.');
-            });
-            */
         });
         
         // Email validation function
